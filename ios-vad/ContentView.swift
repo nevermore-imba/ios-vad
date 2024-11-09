@@ -7,25 +7,21 @@
 
 import SwiftUI
 
-struct ContentView: View {
-
-    @State private var selection: Tab = .webRTC
-
-    enum Tab: String {
-        case webRTC = "WebRTC VAD"
-        case silero = "Silero VAD"
-        case yamnet = "Yamnet VAD"
-    }
+struct ContentView: View {    
+    @Environment(ContentData.self) var data
 
     var body: some View {
-        TabView(selection: $selection) {
+        @Bindable var data = data
+
+        TabView(selection: $data.selection) {
             WebRTCView().tabItem { Label(Tab.webRTC.rawValue, systemImage: "star") }.tag(Tab.webRTC)
-            SileroView().tabItem { Label(Tab.webRTC.rawValue, systemImage: "star") }.tag(Tab.silero)
-            YamnetView().tabItem { Label(Tab.webRTC.rawValue, systemImage: "star") }.tag(Tab.yamnet)
+            SileroView().tabItem { Label(Tab.silero.rawValue, systemImage: "star") }.tag(Tab.silero)
+            YamnetView().tabItem { Label(Tab.yamnet.rawValue, systemImage: "star") }.tag(Tab.yamnet)
         }
     }
 }
 
 #Preview {
     ContentView()
+        .environment(ContentData())
 }

@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct WebRTCView: View {
+    @Environment(ContentData.self) var data
+
     var body: some View {
         VStack {
             Text("WebRTC VAD").font(.headline)
             Spacer().frame(height: 10)
-            SampleRateView()
+            SampleRateView(config: data.webrtc.sampleRate)
             Spacer().frame(height: 10)
             FrameSizeView()
             Spacer().frame(height: 10)
             ModeView()
             Spacer()
-            ResultView()
+            ResultView(speeching: true)
             Spacer()
             RecordButton()
             Spacer().frame(height: 40)
@@ -28,4 +30,5 @@ struct WebRTCView: View {
 
 #Preview {
     WebRTCView()
+        .environment(ContentData())
 }

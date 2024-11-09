@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ResultView: View {
+    var speeching: Bool
+
     var body: some View {
-        Text("Noise Detected!")
+        Text(speeching ? "Speeching" : "slience")
     }
 }
 
 #Preview {
-    ResultView()
+    ResultView(speeching: true)
 }

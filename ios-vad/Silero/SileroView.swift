@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct SileroView: View {
+    @Environment(ContentData.self) var data
+
     var body: some View {
         VStack {
             Text("Silero VAD").font(.headline)
             Spacer().frame(height: 10)
-            SampleRateView()
+            SampleRateView(config: data.silero.sampleRate)
             Spacer().frame(height: 10)
             FrameSizeView()
             Spacer().frame(height: 10)
             ModeView()
             Spacer()
-            ResultView()
+            ResultView(speeching: false)
             Spacer()
             RecordButton()
-            Spacer().frame(height: 10)
+            Spacer().frame(height: 40)
         }
     }
 }
 
 #Preview {
-    SileroView()
+    SileroView().environment(ContentData())
 }

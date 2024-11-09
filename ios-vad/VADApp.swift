@@ -8,10 +8,13 @@
 import SwiftUI
 
 @main
-struct ios_vadApp: App {
+struct VADApp: App {
+    @State private var model = ContentData()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(model)
         }
     }
 }
