@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		653A262B2CDF4DFB0010D043 /* YamnetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A262A2CDF4DFB0010D043 /* YamnetView.swift */; };
+		653A262D2CDF4E170010D043 /* SileroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A262C2CDF4E170010D043 /* SileroView.swift */; };
+		653A262F2CDF4E250010D043 /* WebRTCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A262E2CDF4E250010D043 /* WebRTCView.swift */; };
+		653A26342CDF52910010D043 /* WebRTCSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26332CDF52910010D043 /* WebRTCSetting.swift */; };
+		653A26362CDF53990010D043 /* SileroSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26352CDF53990010D043 /* SileroSetting.swift */; };
+		653A26382CDF54750010D043 /* YamnetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26372CDF54750010D043 /* YamnetSetting.swift */; };
+		653A263A2CDF58210010D043 /* SampleRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26392CDF58210010D043 /* SampleRateView.swift */; };
+		653A263C2CDF599E0010D043 /* FrameSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A263B2CDF599E0010D043 /* FrameSizeView.swift */; };
+		653A263E2CDF59C30010D043 /* ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A263D2CDF59C30010D043 /* ModeView.swift */; };
 		6572293F2CDD0FD50077E1CB /* ios_vadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572293E2CDD0FD50077E1CB /* ios_vadApp.swift */; };
 		657229412CDD0FD50077E1CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657229402CDD0FD50077E1CB /* ContentView.swift */; };
 		657229432CDD0FD70077E1CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657229422CDD0FD70077E1CB /* Assets.xcassets */; };
@@ -14,6 +23,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		653A262A2CDF4DFB0010D043 /* YamnetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YamnetView.swift; sourceTree = "<group>"; };
+		653A262C2CDF4E170010D043 /* SileroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileroView.swift; sourceTree = "<group>"; };
+		653A262E2CDF4E250010D043 /* WebRTCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCView.swift; sourceTree = "<group>"; };
+		653A26332CDF52910010D043 /* WebRTCSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCSetting.swift; sourceTree = "<group>"; };
+		653A26352CDF53990010D043 /* SileroSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileroSetting.swift; sourceTree = "<group>"; };
+		653A26372CDF54750010D043 /* YamnetSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YamnetSetting.swift; sourceTree = "<group>"; };
+		653A26392CDF58210010D043 /* SampleRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRateView.swift; sourceTree = "<group>"; };
+		653A263B2CDF599E0010D043 /* FrameSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameSizeView.swift; sourceTree = "<group>"; };
+		653A263D2CDF59C30010D043 /* ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeView.swift; sourceTree = "<group>"; };
 		6572293B2CDD0FD50077E1CB /* ios-vad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-vad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6572293E2CDD0FD50077E1CB /* ios_vadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_vadApp.swift; sourceTree = "<group>"; };
 		657229402CDD0FD50077E1CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +50,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		653A26272CDF4DC90010D043 /* WebRTC */ = {
+			isa = PBXGroup;
+			children = (
+				653A262E2CDF4E250010D043 /* WebRTCView.swift */,
+				653A26332CDF52910010D043 /* WebRTCSetting.swift */,
+			);
+			path = WebRTC;
+			sourceTree = "<group>";
+		};
+		653A26282CDF4DD90010D043 /* Silero */ = {
+			isa = PBXGroup;
+			children = (
+				653A262C2CDF4E170010D043 /* SileroView.swift */,
+				653A26352CDF53990010D043 /* SileroSetting.swift */,
+			);
+			path = Silero;
+			sourceTree = "<group>";
+		};
+		653A26292CDF4DE20010D043 /* Yamnet */ = {
+			isa = PBXGroup;
+			children = (
+				653A262A2CDF4DFB0010D043 /* YamnetView.swift */,
+				653A26372CDF54750010D043 /* YamnetSetting.swift */,
+			);
+			path = Yamnet;
+			sourceTree = "<group>";
+		};
+		653A26302CDF4EE60010D043 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				653A26392CDF58210010D043 /* SampleRateView.swift */,
+				653A263B2CDF599E0010D043 /* FrameSizeView.swift */,
+				653A263D2CDF59C30010D043 /* ModeView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		657229322CDD0FD50077E1CB = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +106,10 @@
 		6572293D2CDD0FD50077E1CB /* ios-vad */ = {
 			isa = PBXGroup;
 			children = (
+				653A26302CDF4EE60010D043 /* Common */,
+				653A26292CDF4DE20010D043 /* Yamnet */,
+				653A26282CDF4DD90010D043 /* Silero */,
+				653A26272CDF4DC90010D043 /* WebRTC */,
 				6572293E2CDD0FD50077E1CB /* ios_vadApp.swift */,
 				657229402CDD0FD50077E1CB /* ContentView.swift */,
 				657229422CDD0FD70077E1CB /* Assets.xcassets */,
@@ -137,8 +196,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653A26362CDF53990010D043 /* SileroSetting.swift in Sources */,
 				657229412CDD0FD50077E1CB /* ContentView.swift in Sources */,
+				653A26382CDF54750010D043 /* YamnetSetting.swift in Sources */,
+				653A262F2CDF4E250010D043 /* WebRTCView.swift in Sources */,
 				6572293F2CDD0FD50077E1CB /* ios_vadApp.swift in Sources */,
+				653A263E2CDF59C30010D043 /* ModeView.swift in Sources */,
+				653A263C2CDF599E0010D043 /* FrameSizeView.swift in Sources */,
+				653A263A2CDF58210010D043 /* SampleRateView.swift in Sources */,
+				653A26342CDF52910010D043 /* WebRTCSetting.swift in Sources */,
+				653A262D2CDF4E170010D043 /* SileroView.swift in Sources */,
+				653A262B2CDF4DFB0010D043 /* YamnetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
