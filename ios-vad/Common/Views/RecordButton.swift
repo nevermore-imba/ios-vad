@@ -17,7 +17,7 @@ struct RecordButton: View {
             if record.state == .idle {
                 // 开始按钮
                 Button {
-                    print("点击")
+                    record.startRecord()
                 } label: {
                     Image("micphone")
                         .resizable()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BD616A78E792FC7859A5E2A /* libPods-ios-vad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB44367D8E2D3CAF3B980D2C /* libPods-ios-vad.a */; };
 		653A263A2CDF58210010D043 /* SampleRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26392CDF58210010D043 /* SampleRateView.swift */; };
 		653A263C2CDF599E0010D043 /* FrameSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A263B2CDF599E0010D043 /* FrameSizeView.swift */; };
 		653A263E2CDF59C30010D043 /* ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A263D2CDF59C30010D043 /* ModeView.swift */; };
@@ -21,6 +22,10 @@
 		653A26532CDF7C350010D043 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26522CDF7C350010D043 /* TestView.swift */; };
 		653A26552CDF8C600010D043 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26542CDF8C600010D043 /* Result.swift */; };
 		653A26572CDF8EC70010D043 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26562CDF8EC70010D043 /* Record.swift */; };
+		653A265A2CDF9ACF0010D043 /* PermissionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26592CDF9ACF0010D043 /* PermissionUtil.swift */; };
+		653A265C2CDF9E1E0010D043 /* SileroVAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A265B2CDF9E1E0010D043 /* SileroVAD.swift */; };
+		653A26602CDF9ECD0010D043 /* VADStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A265F2CDF9ECC0010D043 /* VADStrategy.swift */; };
+		653A26622CDF9FE70010D043 /* VADState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26612CDF9FE70010D043 /* VADState.swift */; };
 		6572293F2CDD0FD50077E1CB /* VADApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572293E2CDD0FD50077E1CB /* VADApp.swift */; };
 		657229412CDD0FD50077E1CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657229402CDD0FD50077E1CB /* ContentView.swift */; };
 		657229432CDD0FD70077E1CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657229422CDD0FD70077E1CB /* Assets.xcassets */; };
@@ -28,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CF1CCB54CD4E44329833C36 /* Pods-ios-vad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-vad.debug.xcconfig"; path = "Target Support Files/Pods-ios-vad/Pods-ios-vad.debug.xcconfig"; sourceTree = "<group>"; };
 		653A26392CDF58210010D043 /* SampleRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRateView.swift; sourceTree = "<group>"; };
 		653A263B2CDF599E0010D043 /* FrameSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameSizeView.swift; sourceTree = "<group>"; };
 		653A263D2CDF59C30010D043 /* ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeView.swift; sourceTree = "<group>"; };
@@ -42,11 +48,17 @@
 		653A26522CDF7C350010D043 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		653A26542CDF8C600010D043 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		653A26562CDF8EC70010D043 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		653A26592CDF9ACF0010D043 /* PermissionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionUtil.swift; sourceTree = "<group>"; };
+		653A265B2CDF9E1E0010D043 /* SileroVAD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileroVAD.swift; sourceTree = "<group>"; };
+		653A265F2CDF9ECC0010D043 /* VADStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADStrategy.swift; sourceTree = "<group>"; };
+		653A26612CDF9FE70010D043 /* VADState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADState.swift; sourceTree = "<group>"; };
 		6572293B2CDD0FD50077E1CB /* ios-vad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-vad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6572293E2CDD0FD50077E1CB /* VADApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADApp.swift; sourceTree = "<group>"; };
 		657229402CDD0FD50077E1CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		657229422CDD0FD70077E1CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		657229452CDD0FD70077E1CB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6F6A0929579CEEE209A3C073 /* Pods-ios-vad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-vad.release.xcconfig"; path = "Target Support Files/Pods-ios-vad/Pods-ios-vad.release.xcconfig"; sourceTree = "<group>"; };
+		CB44367D8E2D3CAF3B980D2C /* libPods-ios-vad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-vad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BD616A78E792FC7859A5E2A /* libPods-ios-vad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +83,7 @@
 		653A26282CDF4DD90010D043 /* Silero */ = {
 			isa = PBXGroup;
 			children = (
+				653A265B2CDF9E1E0010D043 /* SileroVAD.swift */,
 			);
 			path = Silero;
 			sourceTree = "<group>";
@@ -84,12 +98,8 @@
 		653A26302CDF4EE60010D043 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				653A26412CDF5FCD0010D043 /* ResultView.swift */,
-				653A26392CDF58210010D043 /* SampleRateView.swift */,
-				653A263B2CDF599E0010D043 /* FrameSizeView.swift */,
-				653A263D2CDF59C30010D043 /* ModeView.swift */,
-				653A263F2CDF5C7F0010D043 /* RecordButton.swift */,
-				653A26522CDF7C350010D043 /* TestView.swift */,
+				653A265E2CDF9EA60010D043 /* VAD */,
+				653A265D2CDF9E940010D043 /* Views */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -101,12 +111,42 @@
 				653A264E2CDF6F030010D043 /* Configuration.swift */,
 				653A26482CDF6E5E0010D043 /* SampleRate.swift */,
 				653A264A2CDF6E790010D043 /* FrameSize.swift */,
-				653A264C2CDF6EB70010D043 /* VADMode.swift */,
-				653A26502CDF73530010D043 /* VADType.swift */,
 				653A26542CDF8C600010D043 /* Result.swift */,
 				653A26562CDF8EC70010D043 /* Record.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		653A26582CDF9AB80010D043 /* Microphone */ = {
+			isa = PBXGroup;
+			children = (
+				653A26592CDF9ACF0010D043 /* PermissionUtil.swift */,
+			);
+			path = Microphone;
+			sourceTree = "<group>";
+		};
+		653A265D2CDF9E940010D043 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				653A26412CDF5FCD0010D043 /* ResultView.swift */,
+				653A26392CDF58210010D043 /* SampleRateView.swift */,
+				653A263B2CDF599E0010D043 /* FrameSizeView.swift */,
+				653A263D2CDF59C30010D043 /* ModeView.swift */,
+				653A263F2CDF5C7F0010D043 /* RecordButton.swift */,
+				653A26522CDF7C350010D043 /* TestView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		653A265E2CDF9EA60010D043 /* VAD */ = {
+			isa = PBXGroup;
+			children = (
+				653A264C2CDF6EB70010D043 /* VADMode.swift */,
+				653A26502CDF73530010D043 /* VADType.swift */,
+				653A265F2CDF9ECC0010D043 /* VADStrategy.swift */,
+				653A26612CDF9FE70010D043 /* VADState.swift */,
+			);
+			path = VAD;
 			sourceTree = "<group>";
 		};
 		657229322CDD0FD50077E1CB = {
@@ -114,6 +154,8 @@
 			children = (
 				6572293D2CDD0FD50077E1CB /* ios-vad */,
 				6572293C2CDD0FD50077E1CB /* Products */,
+				DCFE1230E6234E289F1F956A /* Pods */,
+				B8265B4E6EB3C0523B75710F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +172,7 @@
 			children = (
 				6572293E2CDD0FD50077E1CB /* VADApp.swift */,
 				657229402CDD0FD50077E1CB /* ContentView.swift */,
+				653A26582CDF9AB80010D043 /* Microphone */,
 				653A26432CDF63F20010D043 /* Data */,
 				653A26302CDF4EE60010D043 /* Common */,
 				653A26272CDF4DC90010D043 /* WebRTC */,
@@ -149,6 +192,23 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		B8265B4E6EB3C0523B75710F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB44367D8E2D3CAF3B980D2C /* libPods-ios-vad.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCFE1230E6234E289F1F956A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4CF1CCB54CD4E44329833C36 /* Pods-ios-vad.debug.xcconfig */,
+				6F6A0929579CEEE209A3C073 /* Pods-ios-vad.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,6 +216,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 657229492CDD0FD70077E1CB /* Build configuration list for PBXNativeTarget "ios-vad" */;
 			buildPhases = (
+				9A5D3A3C1C3E66460A84FB8D /* [CP] Check Pods Manifest.lock */,
 				657229372CDD0FD50077E1CB /* Sources */,
 				657229382CDD0FD50077E1CB /* Frameworks */,
 				657229392CDD0FD50077E1CB /* Resources */,
@@ -214,6 +275,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9A5D3A3C1C3E66460A84FB8D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ios-vad-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		657229372CDD0FD50077E1CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -226,10 +312,14 @@
 				653A263C2CDF599E0010D043 /* FrameSizeView.swift in Sources */,
 				653A26572CDF8EC70010D043 /* Record.swift in Sources */,
 				653A264F2CDF6F030010D043 /* Configuration.swift in Sources */,
+				653A265C2CDF9E1E0010D043 /* SileroVAD.swift in Sources */,
 				653A26552CDF8C600010D043 /* Result.swift in Sources */,
+				653A26622CDF9FE70010D043 /* VADState.swift in Sources */,
 				653A26422CDF5FCD0010D043 /* ResultView.swift in Sources */,
 				653A26532CDF7C350010D043 /* TestView.swift in Sources */,
 				653A263A2CDF58210010D043 /* SampleRateView.swift in Sources */,
+				653A265A2CDF9ACF0010D043 /* PermissionUtil.swift in Sources */,
+				653A26602CDF9ECD0010D043 /* VADStrategy.swift in Sources */,
 				653A26512CDF73530010D043 /* VADType.swift in Sources */,
 				653A26402CDF5C7F0010D043 /* RecordButton.swift in Sources */,
 				653A26452CDF64100010D043 /* ContentData.swift in Sources */,
@@ -362,6 +452,7 @@
 		};
 		6572294A2CDD0FD70077E1CB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CF1CCB54CD4E44329833C36 /* Pods-ios-vad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -376,6 +467,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,6 +483,7 @@
 		};
 		6572294B2CDD0FD70077E1CB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F6A0929579CEEE209A3C073 /* Pods-ios-vad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -405,6 +498,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

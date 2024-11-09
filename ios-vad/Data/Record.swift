@@ -15,4 +15,13 @@ struct VADRecord: Hashable {
 
     let type: VADType
     let state: State
+
+    func startRecord() {
+        PermissionUtil.requestMicrophonePermission { result in
+            guard result.granted else {
+                fatalError()
+            }
+            print("HHHH: record")
+        }
+    }
 }
