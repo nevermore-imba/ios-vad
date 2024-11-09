@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ResultView: View {
-    var speeching: Bool
+    var result: VADResult
 
     var body: some View {
-        Text(speeching ? "Speeching" : "slience")
+        Text(result.state.desc)
     }
 }
 
 #Preview {
-    ResultView(speeching: true)
+    ResultView(result: VADResult(type: .webRTC, state: .idle))
 }

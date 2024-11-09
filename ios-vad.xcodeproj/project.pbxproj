@@ -19,6 +19,8 @@
 		653A264F2CDF6F030010D043 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A264E2CDF6F030010D043 /* Configuration.swift */; };
 		653A26512CDF73530010D043 /* VADType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26502CDF73530010D043 /* VADType.swift */; };
 		653A26532CDF7C350010D043 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26522CDF7C350010D043 /* TestView.swift */; };
+		653A26552CDF8C600010D043 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26542CDF8C600010D043 /* Result.swift */; };
+		653A26572CDF8EC70010D043 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26562CDF8EC70010D043 /* Record.swift */; };
 		6572293F2CDD0FD50077E1CB /* VADApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572293E2CDD0FD50077E1CB /* VADApp.swift */; };
 		657229412CDD0FD50077E1CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657229402CDD0FD50077E1CB /* ContentView.swift */; };
 		657229432CDD0FD70077E1CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657229422CDD0FD70077E1CB /* Assets.xcassets */; };
@@ -38,6 +40,8 @@
 		653A264E2CDF6F030010D043 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		653A26502CDF73530010D043 /* VADType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADType.swift; sourceTree = "<group>"; };
 		653A26522CDF7C350010D043 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		653A26542CDF8C600010D043 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		653A26562CDF8EC70010D043 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		6572293B2CDD0FD50077E1CB /* ios-vad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-vad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6572293E2CDD0FD50077E1CB /* VADApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADApp.swift; sourceTree = "<group>"; };
 		657229402CDD0FD50077E1CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,11 +84,11 @@
 		653A26302CDF4EE60010D043 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				653A26412CDF5FCD0010D043 /* ResultView.swift */,
 				653A26392CDF58210010D043 /* SampleRateView.swift */,
 				653A263B2CDF599E0010D043 /* FrameSizeView.swift */,
 				653A263D2CDF59C30010D043 /* ModeView.swift */,
 				653A263F2CDF5C7F0010D043 /* RecordButton.swift */,
-				653A26412CDF5FCD0010D043 /* ResultView.swift */,
 				653A26522CDF7C350010D043 /* TestView.swift */,
 			);
 			path = Common;
@@ -94,11 +98,13 @@
 			isa = PBXGroup;
 			children = (
 				653A26442CDF64100010D043 /* ContentData.swift */,
+				653A264E2CDF6F030010D043 /* Configuration.swift */,
 				653A26482CDF6E5E0010D043 /* SampleRate.swift */,
 				653A264A2CDF6E790010D043 /* FrameSize.swift */,
 				653A264C2CDF6EB70010D043 /* VADMode.swift */,
-				653A264E2CDF6F030010D043 /* Configuration.swift */,
 				653A26502CDF73530010D043 /* VADType.swift */,
+				653A26542CDF8C600010D043 /* Result.swift */,
+				653A26562CDF8EC70010D043 /* Record.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -218,7 +224,9 @@
 				6572293F2CDD0FD50077E1CB /* VADApp.swift in Sources */,
 				653A263E2CDF59C30010D043 /* ModeView.swift in Sources */,
 				653A263C2CDF599E0010D043 /* FrameSizeView.swift in Sources */,
+				653A26572CDF8EC70010D043 /* Record.swift in Sources */,
 				653A264F2CDF6F030010D043 /* Configuration.swift in Sources */,
+				653A26552CDF8C600010D043 /* Result.swift in Sources */,
 				653A26422CDF5FCD0010D043 /* ResultView.swift in Sources */,
 				653A26532CDF7C350010D043 /* TestView.swift in Sources */,
 				653A263A2CDF58210010D043 /* SampleRateView.swift in Sources */,
