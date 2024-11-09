@@ -22,10 +22,13 @@
 		653A26532CDF7C350010D043 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26522CDF7C350010D043 /* TestView.swift */; };
 		653A26552CDF8C600010D043 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26542CDF8C600010D043 /* Result.swift */; };
 		653A26572CDF8EC70010D043 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26562CDF8EC70010D043 /* Record.swift */; };
-		653A265A2CDF9ACF0010D043 /* PermissionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26592CDF9ACF0010D043 /* PermissionUtil.swift */; };
+		653A265A2CDF9ACF0010D043 /* Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26592CDF9ACF0010D043 /* Permission.swift */; };
 		653A265C2CDF9E1E0010D043 /* SileroVAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A265B2CDF9E1E0010D043 /* SileroVAD.swift */; };
 		653A26602CDF9ECD0010D043 /* VADStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A265F2CDF9ECC0010D043 /* VADStrategy.swift */; };
 		653A26622CDF9FE70010D043 /* VADState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26612CDF9FE70010D043 /* VADState.swift */; };
+		653A26642CDFA4020010D043 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26632CDFA4020010D043 /* AudioRecorder.swift */; };
+		653A26662CDFAD130010D043 /* OpenMicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26652CDFAD130010D043 /* OpenMicProvider.swift */; };
+		653A26682CDFAE590010D043 /* VADConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26672CDFAE590010D043 /* VADConfig.swift */; };
 		6572293F2CDD0FD50077E1CB /* VADApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572293E2CDD0FD50077E1CB /* VADApp.swift */; };
 		657229412CDD0FD50077E1CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657229402CDD0FD50077E1CB /* ContentView.swift */; };
 		657229432CDD0FD70077E1CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657229422CDD0FD70077E1CB /* Assets.xcassets */; };
@@ -48,10 +51,13 @@
 		653A26522CDF7C350010D043 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		653A26542CDF8C600010D043 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		653A26562CDF8EC70010D043 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		653A26592CDF9ACF0010D043 /* PermissionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionUtil.swift; sourceTree = "<group>"; };
+		653A26592CDF9ACF0010D043 /* Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permission.swift; sourceTree = "<group>"; };
 		653A265B2CDF9E1E0010D043 /* SileroVAD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SileroVAD.swift; sourceTree = "<group>"; };
 		653A265F2CDF9ECC0010D043 /* VADStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADStrategy.swift; sourceTree = "<group>"; };
 		653A26612CDF9FE70010D043 /* VADState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADState.swift; sourceTree = "<group>"; };
+		653A26632CDFA4020010D043 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		653A26652CDFAD130010D043 /* OpenMicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMicProvider.swift; sourceTree = "<group>"; };
+		653A26672CDFAE590010D043 /* VADConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADConfig.swift; sourceTree = "<group>"; };
 		6572293B2CDD0FD50077E1CB /* ios-vad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-vad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6572293E2CDD0FD50077E1CB /* VADApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADApp.swift; sourceTree = "<group>"; };
 		657229402CDD0FD50077E1CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 		653A26302CDF4EE60010D043 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				653A26652CDFAD130010D043 /* OpenMicProvider.swift */,
 				653A265E2CDF9EA60010D043 /* VAD */,
 				653A265D2CDF9E940010D043 /* Views */,
 			);
@@ -120,7 +127,8 @@
 		653A26582CDF9AB80010D043 /* Microphone */ = {
 			isa = PBXGroup;
 			children = (
-				653A26592CDF9ACF0010D043 /* PermissionUtil.swift */,
+				653A26592CDF9ACF0010D043 /* Permission.swift */,
+				653A26632CDFA4020010D043 /* AudioRecorder.swift */,
 			);
 			path = Microphone;
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 				653A26502CDF73530010D043 /* VADType.swift */,
 				653A265F2CDF9ECC0010D043 /* VADStrategy.swift */,
 				653A26612CDF9FE70010D043 /* VADState.swift */,
+				653A26672CDFAE590010D043 /* VADConfig.swift */,
 			);
 			path = VAD;
 			sourceTree = "<group>";
@@ -315,11 +324,14 @@
 				653A265C2CDF9E1E0010D043 /* SileroVAD.swift in Sources */,
 				653A26552CDF8C600010D043 /* Result.swift in Sources */,
 				653A26622CDF9FE70010D043 /* VADState.swift in Sources */,
+				653A26662CDFAD130010D043 /* OpenMicProvider.swift in Sources */,
 				653A26422CDF5FCD0010D043 /* ResultView.swift in Sources */,
 				653A26532CDF7C350010D043 /* TestView.swift in Sources */,
 				653A263A2CDF58210010D043 /* SampleRateView.swift in Sources */,
-				653A265A2CDF9ACF0010D043 /* PermissionUtil.swift in Sources */,
+				653A265A2CDF9ACF0010D043 /* Permission.swift in Sources */,
 				653A26602CDF9ECD0010D043 /* VADStrategy.swift in Sources */,
+				653A26642CDFA4020010D043 /* AudioRecorder.swift in Sources */,
+				653A26682CDFAE590010D043 /* VADConfig.swift in Sources */,
 				653A26512CDF73530010D043 /* VADType.swift in Sources */,
 				653A26402CDF5C7F0010D043 /* RecordButton.swift in Sources */,
 				653A26452CDF64100010D043 /* ContentData.swift in Sources */,
@@ -456,12 +468,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ios-vad/Preview Content\"";
-				DEVELOPMENT_TEAM = 78MWKCLD6V;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 26FBUEXXH7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "请允许访问麦克风，以进行 VAD 检测";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -473,8 +488,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.chuquan.ios-vad.ios-vad";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fenbi.ariesinhouse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.fenbi.ariesinhouse 1717666343";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -493,6 +510,7 @@
 				DEVELOPMENT_TEAM = 78MWKCLD6V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "请允许访问麦克风，以进行 VAD 检测";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

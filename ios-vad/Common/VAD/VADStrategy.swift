@@ -7,26 +7,11 @@
 
 import Foundation
 
-public struct VADConfig {
-    let type: VADType                           // VAD 类型，0：
-    let minSpeechDuration: Int64            // 最小说话时长，单位：毫秒
-    let maxPauseDuration: Int64             // 最大停顿时间，单位：毫秒
-
-    static var defaultValue: VADConfig {
-        return VADConfig(type: .silero, minSpeechDuration: 50, maxPauseDuration: 2000)
-    }
-}
-
-enum AudioStream {
-    case pcm(Data)           // PCM
-}
-
 protocol VADStrategy {
     func setup(minSilenceDurationMs: Int64, minSpeechDurationMs: Int64)
-    func checkVAD(stream: AudioStream, handler: @escaping (VADState) -> Void)
+    func checkVAD(pcm: Data, handler: @escaping (VADState) -> Void)
     func currentState() -> VADState
 }
-
 
 // MARK: - SileroVADStrategy
 
@@ -49,8 +34,7 @@ class SileroVADStrategy: VADStrategy {
         sileroVAD?.delegate = self
     }
 
-    func checkVAD(stream: AudioStream, handler: @escaping (VADState) -> Void) {
-        guard case AudioStream.pcm(let pcm) = stream else { return }
+    func checkVAD(pcm: Data, handler: @escaping (VADState) -> Void) {
         self.handler = handler
         let data: [Float] = pcm.int16Array().map { Float($0) / 32768.0 } // 归一化处理
         pcmBuffer += data

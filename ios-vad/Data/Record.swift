@@ -17,11 +17,13 @@ struct VADRecord: Hashable {
     let state: State
 
     func startRecord() {
-        PermissionUtil.requestMicrophonePermission { result in
+        Permission.requestMicrophonePermission { result in
             guard result.granted else {
                 fatalError()
             }
-            print("HHHH: record")
+            OpenMicProvider.shared.startRecord(config: VADConfig.defaultValue) { state in
+                // TODO: @baocq
+            }
         }
     }
 }

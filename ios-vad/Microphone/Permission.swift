@@ -13,7 +13,7 @@ struct PermissionResult {
     let granted: Bool               // 是否授权
 }
 
-class PermissionUtil {
+class Permission {
     static func requestMicrophonePermission(_ completion: @escaping (PermissionResult) -> Void) {
         let status = AVAudioSession.sharedInstance().recordPermission
         let firstRequest = status == .undetermined
