@@ -9,7 +9,20 @@ import SwiftUI
 
 struct WebRTCView: View {
     var body: some View {
-        Text("WebRTC Home")
+        VStack {
+            Text("WebRTC VAD").font(.headline)
+            Spacer().frame(height: 10)
+            SampleRateView()
+            Spacer().frame(height: 10)
+            FrameSizeView()
+            Spacer().frame(height: 10)
+            ModeView()
+            Spacer()
+            ResultView()
+            Spacer()
+            RecordButton()
+            Spacer().frame(height: 40)
+        }
     }
 }
 

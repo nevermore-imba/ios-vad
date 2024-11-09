@@ -9,7 +9,20 @@ import SwiftUI
 
 struct SileroView: View {
     var body: some View {
-        Text("Silero Home")
+        VStack {
+            Text("Silero VAD").font(.headline)
+            Spacer().frame(height: 10)
+            SampleRateView()
+            Spacer().frame(height: 10)
+            FrameSizeView()
+            Spacer().frame(height: 10)
+            ModeView()
+            Spacer()
+            ResultView()
+            Spacer()
+            RecordButton()
+            Spacer().frame(height: 10)
+        }
     }
 }
 

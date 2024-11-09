@@ -17,6 +17,7 @@
 		653A263C2CDF599E0010D043 /* FrameSizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A263B2CDF599E0010D043 /* FrameSizeView.swift */; };
 		653A263E2CDF59C30010D043 /* ModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A263D2CDF59C30010D043 /* ModeView.swift */; };
 		653A26402CDF5C7F0010D043 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A263F2CDF5C7F0010D043 /* RecordButton.swift */; };
+		653A26422CDF5FCD0010D043 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26412CDF5FCD0010D043 /* ResultView.swift */; };
 		6572293F2CDD0FD50077E1CB /* ios_vadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572293E2CDD0FD50077E1CB /* ios_vadApp.swift */; };
 		657229412CDD0FD50077E1CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657229402CDD0FD50077E1CB /* ContentView.swift */; };
 		657229432CDD0FD70077E1CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657229422CDD0FD70077E1CB /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		653A263B2CDF599E0010D043 /* FrameSizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameSizeView.swift; sourceTree = "<group>"; };
 		653A263D2CDF59C30010D043 /* ModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeView.swift; sourceTree = "<group>"; };
 		653A263F2CDF5C7F0010D043 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		653A26412CDF5FCD0010D043 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		6572293B2CDD0FD50077E1CB /* ios-vad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-vad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6572293E2CDD0FD50077E1CB /* ios_vadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_vadApp.swift; sourceTree = "<group>"; };
 		657229402CDD0FD50077E1CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				653A263B2CDF599E0010D043 /* FrameSizeView.swift */,
 				653A263D2CDF59C30010D043 /* ModeView.swift */,
 				653A263F2CDF5C7F0010D043 /* RecordButton.swift */,
+				653A26412CDF5FCD0010D043 /* ResultView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				6572293F2CDD0FD50077E1CB /* ios_vadApp.swift in Sources */,
 				653A263E2CDF59C30010D043 /* ModeView.swift in Sources */,
 				653A263C2CDF599E0010D043 /* FrameSizeView.swift in Sources */,
+				653A26422CDF5FCD0010D043 /* ResultView.swift in Sources */,
 				653A263A2CDF58210010D043 /* SampleRateView.swift in Sources */,
 				653A26402CDF5C7F0010D043 /* RecordButton.swift in Sources */,
 				653A26342CDF52910010D043 /* WebRTCSetting.swift in Sources */,
