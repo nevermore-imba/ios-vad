@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Tab: String {
+enum VADType: String {
     case webRTC = "WebRTC VAD"
     case silero = "Silero VAD"
     case yamnet = "Yamnet VAD"

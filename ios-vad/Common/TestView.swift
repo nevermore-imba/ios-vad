@@ -1,5 +1,5 @@
 //
-//  WebRTCHome.swift
+//  TestView.swift
 //  ios-vad
 //
 //  Created by baochuquan on 2024/11/9.
@@ -7,18 +7,20 @@
 
 import SwiftUI
 
-struct WebRTCView: View {
+struct TestView: View {
     @Environment(ContentData.self) var data
+
+    var config: Configuration
 
     var body: some View {
         VStack {
-            Text("WebRTC VAD").font(.headline)
+            Text(config.type.rawValue).font(.headline)
             Spacer().frame(height: 10)
-            SampleRateView(config: data.webrtc.sampleRate)
+            SampleRateView(type: config.type, config: config.sampleRate)
             Spacer().frame(height: 10)
-            FrameSizeView()
+            FrameSizeView(type: config.type, config: config.frameSize)
             Spacer().frame(height: 10)
-            ModeView()
+            ModeView(type: config.type, config: config.mode)
             Spacer()
             ResultView(speeching: true)
             Spacer()
@@ -29,6 +31,7 @@ struct WebRTCView: View {
 }
 
 #Preview {
-    WebRTCView()
-        .environment(ContentData())
+    let data = ContentData()
+    let config = data.configs[0]
+    return TestView(config: config).environment(data)
 }

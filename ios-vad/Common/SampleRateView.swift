@@ -10,7 +10,12 @@ import SwiftUI
 struct SampleRateView: View {
     @Environment(ContentData.self) var data
 
+    var type: VADType
     var config: SampleRateConfiguration
+
+    var index: Int {
+        data.configs.firstIndex(where: { $0.type == type })!
+    }
 
     var body: some View {
         @Bindable var data = data
@@ -20,9 +25,9 @@ struct SampleRateView: View {
                 Text("Sample Rate")
                     .font(.subheadline)
                 Spacer()
-                Picker(selection: $data.webrtc.sampleRate.selectedOption, label: Text("选项")) {
+                Picker(selection: $data.configs[index].sampleRate, label: Text("Sample Rate")) {
                     ForEach(config.options, id: \.self) { option in
-                        Text(option.desc).tag(option.desc)
+                        Text(option.desc).tag(option)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
@@ -36,5 +41,6 @@ struct SampleRateView: View {
 
 #Preview {
     let data = ContentData()
-    return SampleRateView(config: data.silero.sampleRate).environment(data)
+    let config = data.configs[0]
+    return SampleRateView(type: config.type, config: config.sampleRate).environment(data)
 }

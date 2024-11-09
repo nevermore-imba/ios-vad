@@ -8,19 +8,26 @@
 import SwiftUI
 
 struct ModeView: View {
-    @State private var selectedOption: String = "选项1"
+    @Environment(ContentData.self) var data
 
-    let options = ["选项1", "选项2", "选项2"]
+    var type: VADType
+    var config: ModeConfiguration
+
+    var index: Int {
+        data.configs.firstIndex(where: { $0.type == type })!
+    }
 
     var body: some View {
+        @Bindable var data = data
+
         VStack {
             HStack {
                 Text("Mode")
                     .font(.subheadline)
                 Spacer()
-                Picker(selection: $selectedOption, label: Text("选项")) {
-                    ForEach(options, id: \.self) { option in
-                        Text(option).tag(option)
+                Picker(selection: $data.configs[index].mode.selectedOption, label: Text("Mode")) {
+                    ForEach(data.configs[index].mode.options, id: \.self) { option in
+                        Text(option.desc).tag(option)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
@@ -33,5 +40,7 @@ struct ModeView: View {
 }
 
 #Preview {
-    ModeView()
+    let data = ContentData()
+    let config = data.configs[0]
+    return ModeView(type: config.type, config: config.mode).environment(data)
 }
