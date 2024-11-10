@@ -9,38 +9,30 @@ import SwiftUI
 
 struct SampleRateView: View {
     @Environment(ContentData.self) var data
-
-    var type: VADType
-    var config: SampleRateConfiguration
-
-    var index: Int {
-        data.configs.firstIndex(where: { $0.type == type })!
-    }
+    
+    @State var vadData: VADData
 
     var body: some View {
-        @Bindable var data = data
 
         VStack {
             HStack {
                 Text("Sample Rate")
                     .font(.subheadline)
                 Spacer()
-                Picker(selection: $data.configs[index].sampleRate, label: Text("Sample Rate")) {
-                    ForEach(config.options, id: \.self) { option in
+                Picker(selection: $vadData.sampleRate.selectedOption, label: Text("Sample Rate")) {
+                    ForEach(vadData.sampleRate.options, id: \.self) { option in
                         Text(option.desc).tag(option)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
                 .padding(EdgeInsets())
+                .onChange(of: vadData.sampleRate.selectedOption) { oldValue, newValue in
+                    let frameSizeOptions = newValue.frameSizeOptions(type: vadData.type)
+                    vadData.frameSize = FrameSizeConfiguration(selectedOption: frameSizeOptions[0], options: frameSizeOptions)
+                }
             }
         }
         .background()
         .padding()
     }
-}
-
-#Preview {
-    let data = ContentData()
-    let config = data.configs[0]
-    return SampleRateView(type: config.type, config: config.sampleRate).environment(data)
 }

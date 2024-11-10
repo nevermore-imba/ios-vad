@@ -1,0 +1,22 @@
+//
+//  YamnetVADStrategy.swift
+//  ios-vad
+//
+//  Created by baochuquan on 2024/11/10.
+//
+
+import Foundation
+
+class YamnetVADStrategy: VADStrategy {
+    func setup(silenceTriggerDurationMs: Int64, speechTriggerDurationMs: Int64) {
+
+    }
+    
+    func checkVAD(pcm: Data, handler: @escaping (VADState) -> Void) {
+
+    }
+    
+    func currentState() -> VADState {
+        return .silence
+    }
+}

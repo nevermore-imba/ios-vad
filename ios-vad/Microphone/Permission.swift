@@ -15,9 +15,9 @@ struct PermissionResult {
 
 class Permission {
     static func requestMicrophonePermission(_ completion: @escaping (PermissionResult) -> Void) {
-        let status = AVAudioSession.sharedInstance().recordPermission
+        let status = AVAudioApplication.shared.recordPermission
         let firstRequest = status == .undetermined
-        AVAudioSession.sharedInstance().requestRecordPermission { granted in
+        AVAudioApplication.requestRecordPermission { granted in
             DispatchQueue.main.async {
                 completion(PermissionResult(firstRequest: firstRequest, granted: granted))
             }

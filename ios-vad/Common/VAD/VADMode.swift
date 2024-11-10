@@ -16,4 +16,17 @@ enum VADMode: String, CaseIterable {
     var desc: String {
         rawValue
     }
+
+    var threshold: Float {
+        switch self {
+        case .normal: return 0.5
+        case .low_bitrate: return 0.7
+        case .aggressive: return 0.8
+        case .very_aggressive: return 0.90
+        }
+    }
+
+    static let webrtc: [VADMode] = [.normal, .low_bitrate, .aggressive, .very_aggressive]
+    static let silero: [VADMode] = [.normal, .aggressive, .very_aggressive]
+    static let yamnet: [VADMode] = [.normal, .aggressive, .very_aggressive]
 }

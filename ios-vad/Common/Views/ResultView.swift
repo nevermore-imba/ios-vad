@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct ResultView: View {
-    var result: VADResult
+    @Environment(ContentData.self) var data
+
+    var vadData: VADData
 
     var body: some View {
-        Text(result.state.desc)
+        Text(vadData.result.desc)
     }
 }
 
 #Preview {
-    ResultView(result: VADResult(type: .webRTC, state: .idle))
+    let data = ContentData()
+    let vadData = data.vadData[0]
+    return ResultView(vadData: vadData).environment(data)
 }

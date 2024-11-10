@@ -15,28 +15,15 @@ public protocol SileroVADDelegate: AnyObject {
     func sileroVADDidDetectSilence()
 }
 
-public enum SileroMode: Int {
-    case normal         // 0.5
-    case aggressive     // 0.8
-    case veryAggressive // 0.90
-
-    var threshold: Float {
-        switch self {
-        case .normal: return 0.5
-        case .aggressive: return 0.8
-        case .veryAggressive: return 0.90
-        }
-    }
-}
-
 public class SileroVAD: NSObject {
-    enum State {
+    private enum State {
         case silence
         case start
         case speeching
         case end
     }
-    class InternalBuffer {
+
+    private class InternalBuffer {
         private let size: Int
         private var buffer: [Bool] = []
 
@@ -61,16 +48,15 @@ public class SileroVAD: NSObject {
     // sample rate: 8000;  sliceSize: 256/512/768
     // sample rate: 16000; sliceSize: 512/1024/1536
 
-    static let bundlePath = Bundle.main.path(forResource: "ARSSileroVAD", ofType: "bundle")
     static var modelPath: String {
-        return Bundle.path(forResource: "silero_vad", ofType: "onnx", inDirectory: bundlePath ?? "") ?? ""
+        return Bundle.path(forResource: "silero_vad", ofType: "onnx", inDirectory: "") ?? ""
     }
 
     public weak var delegate: SileroVADDelegate?
     // 配置参数
     private let sampleRate: Int64
     private let sliceSizeSamples: Int64
-    private let mode: SileroMode
+    private let threshold: Float
     // 内部状态
     private var state: State = .silence
     private var silenceBuffer: InternalBuffer
@@ -90,14 +76,14 @@ public class SileroVAD: NSObject {
      *     - sampleRate: 8000; sliceSize: 256, 512, 768
      *     - sampleRate: 16000; sliceSize: 512, 1024, 1536
      */
-    public init(sampleRate: Int64, sliceSize: Int64, mode: SileroMode, minSilenceDurationMs: Int64, minSpeechDurationMs: Int64, modelPath: String = "") {
+    public init(sampleRate: Int64, sliceSize: Int64, threshold: Float, silenceTriggerDurationMs: Int64, speechTriggerDurationMs: Int64, modelPath: String = "") {
         self.sampleRate = sampleRate
         self.sliceSizeSamples = sliceSize
-        self.mode = mode
+        self.threshold = threshold
 
         let samplesPerMs = sampleRate / 1000
-        let silenceBufferSize = Int(ceil(Float(samplesPerMs * minSilenceDurationMs) / Float(sliceSize)))
-        let speechBufferSize = Int(ceil(Float(samplesPerMs * minSpeechDurationMs) / Float(sliceSize)))
+        let silenceBufferSize = Int(ceil(Float(samplesPerMs * silenceTriggerDurationMs) / Float(sliceSize)))
+        let speechBufferSize = Int(ceil(Float(samplesPerMs * speechTriggerDurationMs) / Float(sliceSize)))
         self.silenceBuffer = InternalBuffer(size: silenceBufferSize)
         self.speechBuffer = InternalBuffer(size: speechBufferSize)
 
@@ -176,7 +162,7 @@ public class SileroVAD: NSObject {
             }
         }
 
-        let isSpeech = probability > mode.threshold
+        let isSpeech = probability > threshold
         if isSpeech {
             debugLog("\(timestamp()) prob -> \(probability), true")
         } else {

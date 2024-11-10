@@ -7,21 +7,16 @@
 
 import Foundation
 
-struct VADResult: Hashable {
-    enum State {
-        case idle
-        case speech
-        case silence
+enum VADResult {
+    case idle
+    case speech
+    case silence
 
-        var desc: String {
-            switch self {
-            case .idle: return "Press button to start VAD!"
-            case .speech: return "Speeching"
-            case .silence: return "Silence"
-            }
+    var desc: String {
+        switch self {
+        case .idle: return "Press button to start VAD!"
+        case .speech: return "Speeching"
+        case .silence: return "Silence"
         }
     }
-
-    let type: VADType
-    let state: State
 }

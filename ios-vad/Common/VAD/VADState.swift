@@ -12,4 +12,13 @@ enum VADState {
     case speeching          // 说话中
     case end                // 结束说话
     case silence            // 静默中
+
+    var desc: String {
+        switch self {
+        case .start: return "VAD Start"
+        case .speeching: return "VAD Speeching"
+        case .end: return "VAD End"
+        case .silence: return "VAD Silence"
+        }
+    }
 }

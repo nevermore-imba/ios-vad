@@ -10,23 +10,21 @@ import SwiftUI
 struct TestView: View {
     @Environment(ContentData.self) var data
 
-    var config: Configuration
-    var result: VADResult
-    var record: VADRecord
+    @State var vadData: VADData
 
     var body: some View {
         VStack {
-            Text(config.type.rawValue).font(.headline)
+            Text(vadData.type.rawValue).font(.headline)
             Spacer().frame(height: 10)
-            SampleRateView(type: config.type, config: config.sampleRate)
+            SampleRateView(vadData: vadData)
             Spacer().frame(height: 10)
-            FrameSizeView(type: config.type, config: config.frameSize)
+            FrameSizeView(vadData: vadData)
             Spacer().frame(height: 10)
-            ModeView(type: config.type, config: config.mode)
+            ModeView(vadData: vadData)
             Spacer()
-            ResultView(result: result)
+            ResultView(vadData: vadData)
             Spacer()
-            RecordButton(record: record)
+            RecordButton(vadData: vadData)
             Spacer().frame(height: 40)
         }
     }
@@ -34,8 +32,6 @@ struct TestView: View {
 
 #Preview {
     let data = ContentData()
-    let result = data.results[0]
-    let config = data.configs[0]
-    let record = data.records[0]
-    return TestView(config: config, result: result, record: record).environment(data)
+    let vadData = data.vadData[0]
+    return TestView(vadData: vadData).environment(data)
 }

@@ -10,11 +10,10 @@ import SwiftUI
 struct ModeView: View {
     @Environment(ContentData.self) var data
 
-    var type: VADType
-    var config: ModeConfiguration
+    var vadData: VADData
 
     var index: Int {
-        data.configs.firstIndex(where: { $0.type == type })!
+        data.vadData.firstIndex(where: { $0.type == vadData.type })!
     }
 
     var body: some View {
@@ -25,8 +24,8 @@ struct ModeView: View {
                 Text("Mode")
                     .font(.subheadline)
                 Spacer()
-                Picker(selection: $data.configs[index].mode.selectedOption, label: Text("Mode")) {
-                    ForEach(data.configs[index].mode.options, id: \.self) { option in
+                Picker(selection: $data.vadData[index].mode.selectedOption, label: Text("Mode")) {
+                    ForEach(vadData.mode.options, id: \.self) { option in
                         Text(option.desc).tag(option)
                     }
                 }
@@ -41,6 +40,6 @@ struct ModeView: View {
 
 #Preview {
     let data = ContentData()
-    let config = data.configs[0]
-    return ModeView(type: config.type, config: config.mode).environment(data)
+    let vadData = data.vadData[0]
+    return ModeView(vadData: vadData).environment(data)
 }

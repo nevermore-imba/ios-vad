@@ -16,4 +16,31 @@ enum SampleRate: Int, CaseIterable {
     var desc: String {
         "SAMPLE_RATE_\(self.rawValue)"
     }
+
+    static let webrtc: [SampleRate] = [.rate_8k, .rate_16k, .rate_32k, .rate_48k]
+    static let silero: [SampleRate] = [.rate_8k, .rate_16k]
+    static let yamnet: [SampleRate] = [.rate_16k]
+
+    func frameSizeOptions(type: VADType) -> [FrameSize] {
+        switch type {
+        case .webrtc:
+            switch self {
+            case .rate_8k: return FrameSize.webrtc_8k
+            case .rate_16k: return FrameSize.webrtc_16k
+            case .rate_32k: return FrameSize.webrtc_32k
+            case .rate_48k: return FrameSize.webrtc_48k
+            }
+        case .silero:
+            switch self {
+            case .rate_8k: return FrameSize.silero_8k
+            case .rate_16k: return FrameSize.silero_16k
+            default: return []
+            }
+        case .yamnet:
+            switch self {
+            case .rate_16k: return FrameSize.yamnet_16k
+            default: return []
+            }
+        }
+    }
 }

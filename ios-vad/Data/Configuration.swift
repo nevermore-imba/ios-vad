@@ -7,111 +7,62 @@
 
 import Foundation
 
-struct Configuration: Hashable, Identifiable {
-    var id: String {
-        type.rawValue
-    }
-    var type: VADType
-    var sampleRate: SampleRateConfiguration
-    var frameSize: FrameSizeConfiguration
-    var mode: ModeConfiguration
-
-    static let webrtc = Configuration(
-        type: VADType.webRTC,
-        sampleRate: SampleRateConfiguration(
-            selectedOption: .rate_8k,
-            options: [
-                .rate_8k,
-                .rate_16k,
-                .rate_32k,
-                .rate_48k
-            ]
-        ),
-        frameSize: FrameSizeConfiguration(
-            selectedOption: .size_240,
-            options: [
-                .size_80,
-                .size_160,
-                .size_240
-            ]
-        ),
-        mode: ModeConfiguration(
-            selectedOption: .very_aggressive,
-            options: [
-                .normal,
-                .low_bitrate,
-                .aggressive,
-                .very_aggressive
-            ]
-        )
-    )
-
-    static let silero = Configuration(
-        type: VADType.silero,
-        sampleRate: SampleRateConfiguration(
-            selectedOption: .rate_8k,
-            options: [
-                .rate_8k,
-                .rate_16k
-            ]
-        ),
-        frameSize: FrameSizeConfiguration(
-            selectedOption: .size_256,
-            options: [
-                .size_256,
-                .size_512,
-                .size_768
-            ]
-        ),
-        mode: ModeConfiguration(
-            selectedOption: .normal,
-            options: [
-                .normal,
-                .aggressive,
-                .very_aggressive
-            ]
-        )
-    )
-
-    static let yamnet = Configuration(
-        type: VADType.yamnet,
-        sampleRate: SampleRateConfiguration(
-            selectedOption: .rate_16k,
-            options: [
-                .rate_8k,
-                .rate_16k
-            ]
-        ),
-        frameSize: FrameSizeConfiguration(
-            selectedOption: .size_240,
-            options: [
-                .size_240,
-                .size_512,
-                .size_768
-            ]
-        ),
-        mode: ModeConfiguration(
-            selectedOption: .normal,
-            options: [
-                .normal,
-                .aggressive,
-                .very_aggressive
-            ]
-        )
-    )
-}
+// MARK: - Sample Rate Config
 
 struct SampleRateConfiguration: Hashable {
     var selectedOption: SampleRate
     var options: [SampleRate]
+
+    static let webrtc = SampleRateConfiguration(selectedOption: SampleRate.webrtc[0], options: SampleRate.webrtc)
+
+    static let silero = SampleRateConfiguration(selectedOption: SampleRate.silero[0], options: SampleRate.silero)
+
+    static let yamnet = SampleRateConfiguration(selectedOption: SampleRate.yamnet[0], options: SampleRate.yamnet)
+
+    func frameSizeConfiguration(type: VADType) -> FrameSizeConfiguration {
+        let options = selectedOption.frameSizeOptions(type: type)
+        return FrameSizeConfiguration(selectedOption: options[0], options: options)
+    }
 }
+
+// MARK: - Frame Size Config
 
 struct FrameSizeConfiguration: Hashable {
     var selectedOption: FrameSize
     var options: [FrameSize]
 }
 
+// MARK: - Mode Config
+
 struct ModeConfiguration: Hashable {
     var selectedOption: VADMode
     var options: [VADMode]
+
+    static let webrtc = ModeConfiguration(
+        selectedOption: .very_aggressive,
+        options: [
+            .normal,
+            .low_bitrate,
+            .aggressive,
+            .very_aggressive
+        ]
+    )
+
+    static let silero = ModeConfiguration(
+        selectedOption: .normal,
+        options: [
+            .normal,
+            .aggressive,
+            .very_aggressive
+        ]
+    )
+
+    static let yamnet = ModeConfiguration(
+        selectedOption: .normal,
+        options: [
+            .normal,
+            .aggressive,
+            .very_aggressive
+        ]
+    )
 }

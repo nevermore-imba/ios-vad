@@ -10,14 +10,18 @@ import SwiftUI
 struct RecordButton: View {
     @Environment(ContentData.self) var data
 
-    let record: VADRecord
+    var vadData: VADData
+
+    var index: Int {
+        data.vadData.firstIndex(where: { $0.type == vadData.type })!
+    }
 
     var body: some View {
         HStack {
-            if record.state == .idle {
+            if vadData.record == .idle {
                 // 开始按钮
                 Button {
-                    record.startRecord()
+                    vadData.startRecord()
                 } label: {
                     Image("micphone")
                         .resizable()
@@ -51,5 +55,6 @@ struct RecordButton: View {
 
 #Preview {
     let data = ContentData()
-    return RecordButton(record: data.records[0]).environment(data)
+    let vadData = data.vadData[0]
+    return RecordButton(vadData: vadData).environment(data)
 }

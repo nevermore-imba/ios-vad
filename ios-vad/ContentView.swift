@@ -14,12 +14,12 @@ struct ContentView: View {
         @Bindable var data = data
 
         TabView(selection: $data.selection) {
-            ForEach(0..<data.configs.count, id: \.self) { index in
-                TestView(config: data.configs[index], result: data.results[index], record: data.records[index])
+            ForEach(data.vadData) { vadData in
+                TestView(vadData: vadData)
                     .tabItem {
-                        Label(data.configs[index].type.rawValue, systemImage: "star")
+                        Label(vadData.type.rawValue, systemImage: "star")
                     }
-                    .tag(data.configs[index].type)
+                    .tag(vadData.type)
             }
         }
     }
