@@ -35,8 +35,8 @@ struct FrameSizeConfiguration: Hashable {
 // MARK: - Mode Config
 
 struct ModeConfiguration: Hashable {
-    var selectedOption: VADMode
-    var options: [VADMode]
+    var selectedOption: VADQuality
+    var options: [VADQuality]
 
     static let webrtc = ModeConfiguration(
         selectedOption: .very_aggressive,

@@ -16,7 +16,7 @@
 		653A26452CDF64100010D043 /* ContentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26442CDF64100010D043 /* ContentData.swift */; };
 		653A26492CDF6E5E0010D043 /* SampleRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26482CDF6E5E0010D043 /* SampleRate.swift */; };
 		653A264B2CDF6E790010D043 /* FrameSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A264A2CDF6E790010D043 /* FrameSize.swift */; };
-		653A264D2CDF6EB70010D043 /* VADMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A264C2CDF6EB70010D043 /* VADMode.swift */; };
+		653A264D2CDF6EB70010D043 /* VADQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A264C2CDF6EB70010D043 /* VADQuality.swift */; };
 		653A264F2CDF6F030010D043 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A264E2CDF6F030010D043 /* Configuration.swift */; };
 		653A26512CDF73530010D043 /* VADType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26502CDF73530010D043 /* VADType.swift */; };
 		653A26532CDF7C350010D043 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26522CDF7C350010D043 /* TestView.swift */; };
@@ -49,7 +49,7 @@
 		653A26442CDF64100010D043 /* ContentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentData.swift; sourceTree = "<group>"; };
 		653A26482CDF6E5E0010D043 /* SampleRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRate.swift; sourceTree = "<group>"; };
 		653A264A2CDF6E790010D043 /* FrameSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameSize.swift; sourceTree = "<group>"; };
-		653A264C2CDF6EB70010D043 /* VADMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADMode.swift; sourceTree = "<group>"; };
+		653A264C2CDF6EB70010D043 /* VADQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADQuality.swift; sourceTree = "<group>"; };
 		653A264E2CDF6F030010D043 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		653A26502CDF73530010D043 /* VADType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADType.swift; sourceTree = "<group>"; };
 		653A26522CDF7C350010D043 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		653A265E2CDF9EA60010D043 /* VAD */ = {
 			isa = PBXGroup;
 			children = (
-				653A264C2CDF6EB70010D043 /* VADMode.swift */,
+				653A264C2CDF6EB70010D043 /* VADQuality.swift */,
 				653A26502CDF73530010D043 /* VADType.swift */,
 				653A265F2CDF9ECC0010D043 /* VADStrategy.swift */,
 				653A26612CDF9FE70010D043 /* VADState.swift */,
@@ -360,7 +360,7 @@
 				653A26402CDF5C7F0010D043 /* RecordButton.swift in Sources */,
 				653A26452CDF64100010D043 /* ContentData.swift in Sources */,
 				653A26492CDF6E5E0010D043 /* SampleRate.swift in Sources */,
-				653A264D2CDF6EB70010D043 /* VADMode.swift in Sources */,
+				653A264D2CDF6EB70010D043 /* VADQuality.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

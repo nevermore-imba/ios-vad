@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum VADMode: String, CaseIterable {
+enum VADQuality: String, CaseIterable {
     case normal = "NORMAL"
     case low_bitrate = "LOW_BITERATE"
     case aggressive = "AGGRESSIVE"
@@ -26,7 +26,7 @@ enum VADMode: String, CaseIterable {
         }
     }
 
-    static let webrtc: [VADMode] = [.normal, .low_bitrate, .aggressive, .very_aggressive]
-    static let silero: [VADMode] = [.normal, .aggressive, .very_aggressive]
-    static let yamnet: [VADMode] = [.normal, .aggressive, .very_aggressive]
+    static let webrtc: [VADQuality] = [.normal, .low_bitrate, .aggressive, .very_aggressive]
+    static let silero: [VADQuality] = [.normal, .aggressive, .very_aggressive]
+    static let yamnet: [VADQuality] = [.normal, .aggressive, .very_aggressive]
 }
