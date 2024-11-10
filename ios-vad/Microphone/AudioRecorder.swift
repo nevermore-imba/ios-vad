@@ -9,6 +9,8 @@ import AVFAudio
 import AVFoundation
 import Dispatch
 import Foundation
+import UIKit
+
 
 protocol AudioRecorderDelegate: AnyObject {
     func audioRecorderDidRecordAudio(_ pcm: Data)
@@ -17,28 +19,29 @@ protocol AudioRecorderDelegate: AnyObject {
 public class AudioRecorder: NSObject {
     weak var delegate: AudioRecorderDelegate?
 
-    private var sampleRate: SampleRate = SampleRate.rate_16k                // 采样率
     private let bufferSize = 4096
+    private var customSampleRate = 0
 
-    private var capturesession: AVCaptureSession!
+    private var captureSession: AVCaptureSession!
     private var audioSession: AVAudioSession!
 
     func stopRecord() {
-        capturesession?.stopRunning()
+        captureSession?.stopRunning()
     }
 
     func startRecord(sampleRate: SampleRate) {
         guard let audioCaptureDevice = AVCaptureDevice.default(for: AVMediaType.audio) else {
             fatalError()
         }
-        capturesession = AVCaptureSession()
+        captureSession = AVCaptureSession()
         audioSession = AVAudioSession.sharedInstance()
 
         do {
+            self.customSampleRate = sampleRate.rawValue
             let sampleRate = Double(sampleRate.rawValue)
             let preferredIOBufferDuration: Double = (1.0 / sampleRate) * Double(bufferSize)     // Calculate the time required for BufferSize
 
-            capturesession.automaticallyConfiguresApplicationAudioSession = false
+            captureSession.automaticallyConfiguresApplicationAudioSession = false
 
             try audioCaptureDevice.lockForConfiguration()
             try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: .default)
@@ -50,18 +53,18 @@ public class AudioRecorder: NSObject {
 
             audioCaptureDevice.unlockForConfiguration()
 
-            if capturesession.canAddInput(audioInput) {
-                capturesession.addInput(audioInput)
+            if captureSession.canAddInput(audioInput) {
+                captureSession.addInput(audioInput)
             }
 
             let audioOutput = AVCaptureAudioDataOutput()
             audioOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global())
-            if capturesession.canAddOutput(audioOutput) {
-                capturesession.addOutput(audioOutput)
+            if captureSession.canAddOutput(audioOutput) {
+                captureSession.addOutput(audioOutput)
             }
 
             DispatchQueue.global().async {
-                self.capturesession.startRunning()
+                self.captureSession.startRunning()
             }
         } catch let e {
             print("capture error: \(e)")
@@ -97,7 +100,13 @@ extension AudioRecorder: AVCaptureAudioDataOutputSampleBufferDelegate {
         let mBitsPerChannel = asbd?.pointee.mBitsPerChannel ?? 0
         let mChannelsPerFrame = asbd?.pointee.mChannelsPerFrame ?? 0
         let mFramesPerPacket = asbd?.pointee.mFramesPerPacket ?? 0
-//        print("HHHH: mSampleRate => \(mSampleRate), mBitsPerChannel => \(mBitsPerChannel), mChannelsPerFrame => \(mChannelsPerFrame); mFramesPerPacket => \(mFramesPerPacket)")
+        let actualSampleRate = Int(mSampleRate)
+        print("mSampleRate => \(mSampleRate), mBitsPerChannel => \(mBitsPerChannel), mChannelsPerFrame => \(mChannelsPerFrame); mFramesPerPacket => \(mFramesPerPacket)")
+
+        if actualSampleRate != customSampleRate {
+           fatalError("Error: custom sample rate is \(customSampleRate), but actual sample rate is \(actualSampleRate). It might be caused by system or hardware.")
+        }
+
 
         if let mData = audioBufferList.mBuffers.mData {
             let newData = Data(bytes: mData, count: Int(audioBufferList.mBuffers.mDataByteSize))

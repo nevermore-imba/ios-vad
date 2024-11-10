@@ -27,6 +27,13 @@ struct TestView: View {
             RecordButton(vadData: vadData)
             Spacer().frame(height: 40)
         }
+        .alert(isPresented: $vadData.isError, content: {
+            Alert(
+                title: Text("Error"),
+                message: Text(""),
+                dismissButton: .default(Text("OK"))
+            )
+        })
     }
 }
 

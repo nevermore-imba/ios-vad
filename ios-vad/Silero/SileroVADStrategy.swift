@@ -11,18 +11,14 @@ import Foundation
 // MARK: - SileroVADStrategy
 
 class SileroVADStrategy: VADStrategy {
-    // 采样率：16000Hz
-    // pcm 10ms 回调一次
-    // 声道数：1
-    // 位深：16bit
 
-    private var bufferSize: Int64 = 512 // 单位: 采样次数; 容量： 512 x 2 = 1024 bytes; 媒资 SDK 麦克风采集: 每 10ms 返回数据值 80 x 2 = 160 bytes。换算下来，每采集 7 次（70ms），做一次 vad 检测。
     private var sileroVAD: SileroVAD?
     private var silenceStart: Int = 0
     private var state: VADState = .silence
     private var handler: ((VADState) -> Void)?
     private var timer: Timer?
     private var pcmBuffer: [Float] = []
+    private var bufferSize: Int64 = 512
 
     deinit {
         timer?.invalidate()
@@ -39,12 +35,13 @@ class SileroVADStrategy: VADStrategy {
             speechTriggerDurationMs: speechTriggerDurationMs
         )
         sileroVAD?.delegate = self
-        setupCheckTimer()
+        setupVADCheckLoop()
     }
 
     func checkVAD(pcm: Data, handler: @escaping (VADState) -> Void) {
         self.handler = handler
-        let data: [Float] = pcm.int16Array().map { Float($0) / 32768.0 } // 归一化处理
+        let data: [Float] = pcm.int16Array().map { Float($0) / 32768.0 } // normalize
+        // cache pcm data
         pcmBuffer += data
     }
 
@@ -52,19 +49,11 @@ class SileroVADStrategy: VADStrategy {
         return state
     }
 
-    private func predict(data: [Float]) {
-        do {
-            try sileroVAD?.predict(data: data)
-        } catch _ {
-            fatalError()
-        }
-    }
-
-    private func setupCheckTimer() {
+    private func setupVADCheckLoop() {
         timer?.invalidate()
         let timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            // 判断缓存是否已满，如果已满，则调用 vad 判断
+            // Check pcmBuffer, if it is full, then do vad check.
             let length = self.pcmBuffer.count
             if length >= self.bufferSize {
                 let inputSize = Int(self.bufferSize)
@@ -75,6 +64,14 @@ class SileroVADStrategy: VADStrategy {
         }
         RunLoop.main.add(timer, forMode: .common)
         self.timer = timer
+    }
+
+    private func predict(data: [Float]) {
+        do {
+            try sileroVAD?.predict(data: data)
+        } catch _ {
+            fatalError()
+        }
     }
 }
 

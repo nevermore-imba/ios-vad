@@ -107,7 +107,7 @@ public class SileroVAD: NSObject {
             fatalError()
         }
         super.init()
-        self.debugLog("SampleRate = \(sampleRate); sliceSize = \(sliceSize); threshold = \(threshold); silenceTriggerDurationMs = \(silenceTriggerDurationMs); speechTriggerDurationMs = \(silenceTriggerDurationMs)")
+        debugLog("SampleRate = \(sampleRate); sliceSize = \(sliceSize); threshold = \(threshold); silenceTriggerDurationMs = \(silenceTriggerDurationMs); speechTriggerDurationMs = \(speechTriggerDurationMs)")
     }
 
     public func resetState() {

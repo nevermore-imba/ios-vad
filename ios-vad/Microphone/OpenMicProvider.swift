@@ -25,13 +25,14 @@ class OpenMicProvider {
         case .yamnet:
             vadStrategy = YamnetVADStrategy()
         }
-        vadStrategy?.setup(sampleRate: sampleRate, frameSize: frameSize, quality: quality, silenceTriggerDurationMs: 500, speechTriggerDurationMs: 50)
+        vadStrategy?.setup(sampleRate: sampleRate, frameSize: frameSize, quality: quality, silenceTriggerDurationMs: 300, speechTriggerDurationMs: 50)
 
         audioRecorder.delegate = self
         audioRecorder.startRecord(sampleRate: sampleRate)
     }
 
     func stopRecord() {
+        vadStrategy = nil
         audioRecorder.stopRecord()
     }
 }
@@ -40,7 +41,6 @@ extension OpenMicProvider: AudioRecorderDelegate {
     func audioRecorderDidRecordAudio(_ pcm: Data) {
         vadStrategy?.checkVAD(pcm: pcm) { [weak self] state in
             guard let self = self else { return }
-            print("HHHH: vad => \(state.desc)" )
             self.handler?(state)
         }
     }
