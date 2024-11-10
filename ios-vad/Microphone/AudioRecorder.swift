@@ -101,7 +101,9 @@ extension AudioRecorder: AVCaptureAudioDataOutputSampleBufferDelegate {
 
         if let mData = audioBufferList.mBuffers.mData {
             let newData = Data(bytes: mData, count: Int(audioBufferList.mBuffers.mDataByteSize))
-            delegate?.audioRecorderDidRecordAudio(newData)
+            DispatchQueue.main.async {
+                self.delegate?.audioRecorderDidRecordAudio(newData)
+            }
         }
     }
 }

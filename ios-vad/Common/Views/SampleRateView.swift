@@ -27,8 +27,10 @@ struct SampleRateView: View {
                 .pickerStyle(MenuPickerStyle())
                 .padding(EdgeInsets())
                 .onChange(of: vadData.sampleRate.selectedOption) { oldValue, newValue in
+                    vadData.stopRecord()
                     let frameSizeOptions = newValue.frameSizeOptions(type: vadData.type)
                     vadData.frameSize = FrameSizeConfiguration(selectedOption: frameSizeOptions[0], options: frameSizeOptions)
+
                 }
             }
         }

@@ -20,7 +20,18 @@ struct ContentView: View {
                         Label(vadData.type.rawValue, systemImage: "star")
                     }
                     .tag(vadData.type)
+                    .onChange(of: data.selection) { oldValue, newValue in
+                        vadData.stopRecord()
+                    }
             }
+        }
+        .background(Color.white)
+        .onAppear {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+            UITabBar.appearance().standardAppearance = appearance
+            UITabBar.appearance().scrollEdgeAppearance = appearance
         }
     }
 }

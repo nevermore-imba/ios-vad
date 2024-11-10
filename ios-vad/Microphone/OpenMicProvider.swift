@@ -25,7 +25,7 @@ class OpenMicProvider {
         case .yamnet:
             vadStrategy = YamnetVADStrategy()
         }
-        vadStrategy?.setup(sampleRate: sampleRate, frameSize: frameSize, quality: quality, silenceTriggerDurationMs: 2000, speechTriggerDurationMs: 50)
+        vadStrategy?.setup(sampleRate: sampleRate, frameSize: frameSize, quality: quality, silenceTriggerDurationMs: 500, speechTriggerDurationMs: 50)
 
         audioRecorder.delegate = self
         audioRecorder.startRecord(sampleRate: sampleRate)

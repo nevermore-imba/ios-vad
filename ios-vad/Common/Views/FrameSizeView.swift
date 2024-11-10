@@ -24,6 +24,9 @@ struct FrameSizeView: View {
                 }
                 .pickerStyle(MenuPickerStyle())
                 .padding(EdgeInsets())
+                .onChange(of: vadData.frameSize.selectedOption) { oldValue, newValue in
+                    vadData.stopRecord()
+                }
             }
         }
         .background()

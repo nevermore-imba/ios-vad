@@ -31,6 +31,9 @@ struct QualityView: View {
                 }
                 .pickerStyle(MenuPickerStyle())
                 .padding(EdgeInsets())
+                .onChange(of: vadData.quality.selectedOption) { oldValue, newValue in
+                    vadData.stopRecord()
+                }
             }
         }
         .background()
