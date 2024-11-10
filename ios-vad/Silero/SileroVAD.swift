@@ -49,7 +49,7 @@ public class SileroVAD: NSObject {
     // sample rate: 16000; sliceSize: 512/1024/1536
 
     static var modelPath: String {
-        return Bundle.path(forResource: "silero_vad", ofType: "onnx", inDirectory: "") ?? ""
+        return Bundle.main.path(forResource: "silero_vad", ofType: "onnx") ?? ""
     }
 
     public weak var delegate: SileroVADDelegate?

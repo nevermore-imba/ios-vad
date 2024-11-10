@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ModeView: View {
+struct QualityView: View {
     @Environment(ContentData.self) var data
 
     var vadData: VADData
@@ -21,11 +21,11 @@ struct ModeView: View {
 
         VStack {
             HStack {
-                Text("Mode")
+                Text("Quality")
                     .font(.subheadline)
                 Spacer()
-                Picker(selection: $data.vadData[index].mode.selectedOption, label: Text("Mode")) {
-                    ForEach(vadData.mode.options, id: \.self) { option in
+                Picker(selection: $data.vadData[index].quality.selectedOption, label: Text("Quality")) {
+                    ForEach(vadData.quality.options, id: \.self) { option in
                         Text(option.desc).tag(option)
                     }
                 }
@@ -41,5 +41,5 @@ struct ModeView: View {
 #Preview {
     let data = ContentData()
     let vadData = data.vadData[0]
-    return ModeView(vadData: vadData).environment(data)
+    return QualityView(vadData: vadData).environment(data)
 }

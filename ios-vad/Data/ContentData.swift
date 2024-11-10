@@ -32,7 +32,7 @@ class VADData: Identifiable {
         if lhs.frameSize != rhs.frameSize {
             return false
         }
-        if lhs.mode != rhs.mode {
+        if lhs.quality != rhs.quality {
             return false
         }
         return true
@@ -43,31 +43,32 @@ class VADData: Identifiable {
     var record: VADRecord
     var sampleRate: SampleRateConfiguration
     var frameSize: FrameSizeConfiguration
-    var mode: ModeConfiguration
+    var quality: QualityConfiguration
 
     var id: String {
         type.rawValue
     }
 
-    init(type: VADType, result: VADResult, record: VADRecord, sampleRate: SampleRateConfiguration, frameSize: FrameSizeConfiguration, mode: ModeConfiguration) {
+    init(type: VADType, result: VADResult, record: VADRecord, sampleRate: SampleRateConfiguration, frameSize: FrameSizeConfiguration, quality: QualityConfiguration) {
         self.type = type
         self.result = result
         self.record = record
         self.sampleRate = sampleRate
         self.frameSize = frameSize
-        self.mode = mode
+        self.quality = quality
     }
   
-    static let webrtc = VADData(type: .webrtc, result: .idle, record: .idle, sampleRate: .webrtc, frameSize: SampleRateConfiguration.webrtc.frameSizeConfiguration(type: .webrtc), mode: .webrtc)
-    static let silero = VADData(type: .silero, result: .idle, record: .idle, sampleRate: .silero, frameSize: SampleRateConfiguration.silero.frameSizeConfiguration(type: .silero), mode: .silero)
-    static let yamnet = VADData(type: .yamnet, result: .idle, record: .idle, sampleRate: .yamnet, frameSize: SampleRateConfiguration.yamnet.frameSizeConfiguration(type: .yamnet), mode: .yamnet)
+    static let webrtc = VADData(type: .webrtc, result: .idle, record: .idle, sampleRate: .webrtc, frameSize: SampleRateConfiguration.webrtc.frameSizeConfiguration(type: .webrtc), quality: .webrtc)
+    static let silero = VADData(type: .silero, result: .idle, record: .idle, sampleRate: .silero, frameSize: SampleRateConfiguration.silero.frameSizeConfiguration(type: .silero), quality: .silero)
+    static let yamnet = VADData(type: .yamnet, result: .idle, record: .idle, sampleRate: .yamnet, frameSize: SampleRateConfiguration.yamnet.frameSizeConfiguration(type: .yamnet), quality: .yamnet)
 
     func startRecord() {
-        Permission.requestMicrophonePermission { result in
+        Permission.requestMicrophonePermission { [weak self] result in
+            guard let self = self else { return }
             guard result.granted else {
                 fatalError()
             }
-            OpenMicProvider.shared.startRecord(config: VADConfig.defaultValue) { [weak self] state in
+            OpenMicProvider.shared.startRecord(type: self.type, sampleRate: self.sampleRate.selectedOption, frameSize: self.frameSize.selectedOption, quality: self.quality.selectedOption) { [weak self] state in
                 if state == .start || state == .speeching {
                     self?.result = .speech
                 }
@@ -77,6 +78,7 @@ class VADData: Identifiable {
             }
         }
         record = .work
+        result = .silence
     }
 
     func stopRecord() {

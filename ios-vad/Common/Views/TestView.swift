@@ -20,7 +20,7 @@ struct TestView: View {
             Spacer().frame(height: 10)
             FrameSizeView(vadData: vadData)
             Spacer().frame(height: 10)
-            ModeView(vadData: vadData)
+            QualityView(vadData: vadData)
             Spacer()
             ResultView(vadData: vadData)
             Spacer()

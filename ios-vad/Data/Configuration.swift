@@ -34,11 +34,11 @@ struct FrameSizeConfiguration: Hashable {
 
 // MARK: - Mode Config
 
-struct ModeConfiguration: Hashable {
+struct QualityConfiguration: Hashable {
     var selectedOption: VADQuality
     var options: [VADQuality]
 
-    static let webrtc = ModeConfiguration(
+    static let webrtc = QualityConfiguration(
         selectedOption: .very_aggressive,
         options: [
             .normal,
@@ -48,7 +48,7 @@ struct ModeConfiguration: Hashable {
         ]
     )
 
-    static let silero = ModeConfiguration(
+    static let silero = QualityConfiguration(
         selectedOption: .normal,
         options: [
             .normal,
@@ -57,7 +57,7 @@ struct ModeConfiguration: Hashable {
         ]
     )
 
-    static let yamnet = ModeConfiguration(
+    static let yamnet = QualityConfiguration(
         selectedOption: .normal,
         options: [
             .normal,

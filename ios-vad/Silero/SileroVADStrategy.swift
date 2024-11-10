@@ -24,8 +24,14 @@ class SileroVADStrategy: VADStrategy {
     private var timer: Timer?
     private var pcmBuffer: [Float] = []
 
-    func setup(silenceTriggerDurationMs: Int64, speechTriggerDurationMs: Int64) {
-        sileroVAD = SileroVAD(sampleRate: 16000, sliceSize: bufferSize, threshold: 0.8, silenceTriggerDurationMs: silenceTriggerDurationMs, speechTriggerDurationMs: speechTriggerDurationMs)
+    func setup(sampleRate: SampleRate, frameSize: FrameSize, quality: VADQuality, silenceTriggerDurationMs: Int64, speechTriggerDurationMs: Int64) {
+        sileroVAD = SileroVAD(
+            sampleRate: Int64(sampleRate.rawValue),
+            sliceSize: Int64(frameSize.rawValue),
+            threshold: quality.threshold,
+            silenceTriggerDurationMs: silenceTriggerDurationMs,
+            speechTriggerDurationMs: speechTriggerDurationMs
+        )
         sileroVAD?.delegate = self
     }
 

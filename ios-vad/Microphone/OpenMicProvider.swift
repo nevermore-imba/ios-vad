@@ -14,10 +14,10 @@ class OpenMicProvider {
     private var vadStrategy: VADStrategy?
     private var handler: ((VADState) -> Void)?
 
-    func startRecord(config: VADConfig, handler: @escaping (VADState) -> Void) {
+    func startRecord(type: VADType, sampleRate: SampleRate, frameSize: FrameSize, quality: VADQuality, handler: @escaping (VADState) -> Void) {
         self.handler = handler
 
-        switch config.type {
+        switch type {
         case .webrtc:
             vadStrategy = WebrtcVADStrategy()
         case .silero:
@@ -25,7 +25,7 @@ class OpenMicProvider {
         case .yamnet:
             vadStrategy = YamnetVADStrategy()
         }
-        vadStrategy?.setup(silenceTriggerDurationMs: 2000, speechTriggerDurationMs: 50)
+        vadStrategy?.setup(sampleRate: sampleRate, frameSize: frameSize, quality: quality, silenceTriggerDurationMs: 2000, speechTriggerDurationMs: 50)
 
         audioRecorder.delegate = self
         audioRecorder.startRecord()

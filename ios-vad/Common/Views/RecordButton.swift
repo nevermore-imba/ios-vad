@@ -11,11 +11,7 @@ struct RecordButton: View {
     @Environment(ContentData.self) var data
 
     var vadData: VADData
-
-    var index: Int {
-        data.vadData.firstIndex(where: { $0.type == vadData.type })!
-    }
-
+    
     var body: some View {
         HStack {
             if vadData.record == .idle {
@@ -36,7 +32,7 @@ struct RecordButton: View {
             } else {
                 // 结束按钮
                 Button {
-                    print("点击")
+                    vadData.stopRecord()
                 } label: {
                     Image("rectangle")
                         .resizable()

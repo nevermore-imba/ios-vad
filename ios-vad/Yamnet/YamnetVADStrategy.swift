@@ -8,7 +8,7 @@
 import Foundation
 
 class YamnetVADStrategy: VADStrategy {
-    func setup(silenceTriggerDurationMs: Int64, speechTriggerDurationMs: Int64) {
+    func setup(sampleRate: SampleRate, frameSize: FrameSize, quality: VADQuality, silenceTriggerDurationMs: Int64, speechTriggerDurationMs: Int64) {
 
     }
     
