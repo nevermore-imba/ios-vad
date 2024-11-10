@@ -97,8 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				65E6729A2CE07E7C000A3C09 /* Model */,
-				653A265B2CDF9E1E0010D043 /* SileroVAD.swift */,
 				65E6729D2CE07FF1000A3C09 /* SileroVADStrategy.swift */,
+				653A265B2CDF9E1E0010D043 /* SileroVAD.swift */,
 			);
 			path = Silero;
 			sourceTree = "<group>";

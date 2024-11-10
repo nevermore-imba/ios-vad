@@ -17,22 +17,17 @@ protocol AudioRecorderDelegate: AnyObject {
 public class AudioRecorder: NSObject {
     weak var delegate: AudioRecorderDelegate?
 
-    var SAMPLE_RATE: Int = 44100 // 采样率
-    var actualSampleRate: Float64? // 硬件采样率
-    var actualBitDepth: UInt32? // 位深 bit-depth
-    var BUFFER_SIZE = 4096
+    private var sampleRate: SampleRate = SampleRate.rate_16k                // 采样率
+    private let bufferSize = 4096
 
-    var capturesession: AVCaptureSession!
-    var audioSession: AVAudioSession!
-    
-    private var audioDataBuffer = Data() // 数据存储
+    private var capturesession: AVCaptureSession!
+    private var audioSession: AVAudioSession!
 
-    public func stopRecord() {
+    func stopRecord() {
         capturesession?.stopRunning()
-        audioDataBuffer = Data()
     }
 
-    public func startRecord() {
+    func startRecord(sampleRate: SampleRate) {
         guard let audioCaptureDevice = AVCaptureDevice.default(for: AVMediaType.audio) else {
             fatalError()
         }
@@ -40,15 +35,15 @@ public class AudioRecorder: NSObject {
         audioSession = AVAudioSession.sharedInstance()
 
         do {
+            let sampleRate = Double(sampleRate.rawValue)
+            let preferredIOBufferDuration: Double = (1.0 / sampleRate) * Double(bufferSize)     // Calculate the time required for BufferSize
+
             capturesession.automaticallyConfiguresApplicationAudioSession = false
 
             try audioCaptureDevice.lockForConfiguration()
             try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: .default)
-            try audioSession.setPreferredSampleRate(Double(SAMPLE_RATE))
-
-            // Calculate the time required for BufferSize
-            let preferredIOBufferDuration: TimeInterval = 0.6 / audioSession.sampleRate * Double(BUFFER_SIZE)
-            try audioSession.setPreferredIOBufferDuration(Double(preferredIOBufferDuration))
+            try audioSession.setPreferredSampleRate(sampleRate)
+            try audioSession.setPreferredIOBufferDuration(preferredIOBufferDuration)
             try audioSession.setActive(true)
 
             let audioInput = try AVCaptureDeviceInput(device: audioCaptureDevice)
@@ -61,7 +56,6 @@ public class AudioRecorder: NSObject {
 
             let audioOutput = AVCaptureAudioDataOutput()
             audioOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global())
-
             if capturesession.canAddOutput(audioOutput) {
                 capturesession.addOutput(audioOutput)
             }
@@ -97,17 +91,16 @@ extension AudioRecorder: AVCaptureAudioDataOutputSampleBufferDelegate {
             return
         }
 
-        if actualSampleRate == nil {
-            let fd = CMSampleBufferGetFormatDescription(sampleBuffer)
-            let asbd: UnsafePointer<AudioStreamBasicDescription>? = CMAudioFormatDescriptionGetStreamBasicDescription(fd!)
-            actualSampleRate = asbd?.pointee.mSampleRate
-            actualBitDepth = asbd?.pointee.mBitsPerChannel
-        }
+        let fd = CMSampleBufferGetFormatDescription(sampleBuffer)
+        let asbd: UnsafePointer<AudioStreamBasicDescription>? = CMAudioFormatDescriptionGetStreamBasicDescription(fd!)
+        let mSampleRate = asbd?.pointee.mSampleRate ?? 0
+        let mBitsPerChannel = asbd?.pointee.mBitsPerChannel ?? 0
+        let mChannelsPerFrame = asbd?.pointee.mChannelsPerFrame ?? 0
+        let mFramesPerPacket = asbd?.pointee.mFramesPerPacket ?? 0
+//        print("HHHH: mSampleRate => \(mSampleRate), mBitsPerChannel => \(mBitsPerChannel), mChannelsPerFrame => \(mChannelsPerFrame); mFramesPerPacket => \(mFramesPerPacket)")
 
         if let mData = audioBufferList.mBuffers.mData {
             let newData = Data(bytes: mData, count: Int(audioBufferList.mBuffers.mDataByteSize))
-            audioDataBuffer.append(newData)
-            //print("audioBufferList: \(newData)")
             delegate?.audioRecorderDidRecordAudio(newData)
         }
     }

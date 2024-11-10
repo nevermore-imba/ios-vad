@@ -28,7 +28,7 @@ class OpenMicProvider {
         vadStrategy?.setup(sampleRate: sampleRate, frameSize: frameSize, quality: quality, silenceTriggerDurationMs: 2000, speechTriggerDurationMs: 50)
 
         audioRecorder.delegate = self
-        audioRecorder.startRecord()
+        audioRecorder.startRecord(sampleRate: sampleRate)
     }
 
     func stopRecord() {
