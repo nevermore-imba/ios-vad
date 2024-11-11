@@ -26,6 +26,15 @@ enum VADQuality: String, CaseIterable {
         }
     }
 
+    var webrtcMode: Int {
+        switch self {
+        case .normal: return 0
+        case .low_bitrate: return 1
+        case .aggressive: return 2
+        case .very_aggressive: return 3
+        }
+    }
+
     static let webrtc: [VADQuality] = [.normal, .low_bitrate, .aggressive, .very_aggressive]
     static let silero: [VADQuality] = [.normal, .aggressive, .very_aggressive]
     static let yamnet: [VADQuality] = [.normal, .aggressive, .very_aggressive]

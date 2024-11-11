@@ -28,6 +28,7 @@
 		653A26622CDF9FE70010D043 /* VADState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26612CDF9FE70010D043 /* VADState.swift */; };
 		653A26642CDFA4020010D043 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26632CDFA4020010D043 /* AudioRecorder.swift */; };
 		653A26662CDFAD130010D043 /* OpenMicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A26652CDFAD130010D043 /* OpenMicProvider.swift */; };
+		6559E5FE2CE248F20025D7EA /* WebrtcVAD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559E5FD2CE248F20025D7EA /* WebrtcVAD.swift */; };
 		6572293F2CDD0FD50077E1CB /* VADApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6572293E2CDD0FD50077E1CB /* VADApp.swift */; };
 		657229412CDD0FD50077E1CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657229402CDD0FD50077E1CB /* ContentView.swift */; };
 		657229432CDD0FD70077E1CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 657229422CDD0FD70077E1CB /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		653A26612CDF9FE70010D043 /* VADState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADState.swift; sourceTree = "<group>"; };
 		653A26632CDFA4020010D043 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		653A26652CDFAD130010D043 /* OpenMicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMicProvider.swift; sourceTree = "<group>"; };
+		6559E5FD2CE248F20025D7EA /* WebrtcVAD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebrtcVAD.swift; sourceTree = "<group>"; };
 		6572293B2CDD0FD50077E1CB /* ios-vad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-vad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6572293E2CDD0FD50077E1CB /* VADApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VADApp.swift; sourceTree = "<group>"; };
 		657229402CDD0FD50077E1CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				65E6729F2CE0813C000A3C09 /* WebrtcVADStrategy.swift */,
+				6559E5FD2CE248F20025D7EA /* WebrtcVAD.swift */,
 			);
 			path = WebRTC;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				653A26642CDFA4020010D043 /* AudioRecorder.swift in Sources */,
 				653A26512CDF73530010D043 /* VADType.swift in Sources */,
 				653A26402CDF5C7F0010D043 /* RecordButton.swift in Sources */,
+				6559E5FE2CE248F20025D7EA /* WebrtcVAD.swift in Sources */,
 				653A26452CDF64100010D043 /* ContentData.swift in Sources */,
 				653A26492CDF6E5E0010D043 /* SampleRate.swift in Sources */,
 				653A264D2CDF6EB70010D043 /* VADQuality.swift in Sources */,
