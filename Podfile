@@ -8,4 +8,5 @@ target 'ios-vad' do
   # Comment the next line if you don't want to use dynamic frameworks
   pod 'onnxruntime-objc', '1.18.0'
   pod 'libfvad'
+  pod 'TensorFlowLiteSwift'
 end
