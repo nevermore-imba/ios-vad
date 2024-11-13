@@ -10,7 +10,8 @@ import Foundation
 class OpenMicProvider {
     static let shared = OpenMicProvider()
 
-    private var audioRecorder = AudioRecorder()
+    //private var audioRecorder = AudioRecorder()
+    private var audioRecorder = AudioRecorderNew()
     private var vadStrategy: VADStrategy?
     private var handler: ((VADState) -> Void)?
 
@@ -28,7 +29,7 @@ class OpenMicProvider {
         vadStrategy?.setup(sampleRate: sampleRate, frameSize: frameSize, quality: quality, silenceTriggerDurationMs: 300, speechTriggerDurationMs: 50)
 
         audioRecorder.delegate = self
-        audioRecorder.startRecord(sampleRate: sampleRate)
+        audioRecorder.startRecord(sampleRate: sampleRate, frameSize: frameSize)
     }
 
     func stopRecord() {
@@ -37,8 +38,8 @@ class OpenMicProvider {
     }
 }
 
-extension OpenMicProvider: AudioRecorderDelegate {
-    func audioRecorderDidRecordAudio(_ pcm: Data) {
+extension OpenMicProvider: AudioRecorderNewDelegate {
+    func audioRecorderNewDidRecordAudio(_ pcm: [Int16]) {
         vadStrategy?.checkVAD(pcm: pcm) { [weak self] state in
             guard let self = self else { return }
             self.handler?(state)

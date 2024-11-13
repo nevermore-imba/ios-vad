@@ -22,7 +22,7 @@ protocol VADStrategy {
     /// - Parameters:
     ///   - pcm: pcm Data
     ///   - handler: callback.
-    func checkVAD(pcm: Data, handler: @escaping (VADState) -> Void)
+    func checkVAD(pcm: [Int16], handler: @escaping (VADState) -> Void)
 
     /// current vad state
     /// - Returns: vad state

@@ -16,7 +16,8 @@ protocol AudioRecorderDelegate: AnyObject {
     func audioRecorderDidRecordAudio(_ pcm: Data)
 }
 
-public class AudioRecorder: NSObject {
+// Deprecated: AudioRecorderOld has bugs
+public class AudioRecorderOld: NSObject {
     weak var delegate: AudioRecorderDelegate?
 
     private let bufferSize = 4096
@@ -72,7 +73,7 @@ public class AudioRecorder: NSObject {
     }
 }
 
-extension AudioRecorder: AVCaptureAudioDataOutputSampleBufferDelegate {
+extension AudioRecorderOld: AVCaptureAudioDataOutputSampleBufferDelegate {
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         var buffer: CMBlockBuffer? = nil
         let numChannels: UInt32 = 1
@@ -114,5 +115,11 @@ extension AudioRecorder: AVCaptureAudioDataOutputSampleBufferDelegate {
                 self.delegate?.audioRecorderDidRecordAudio(newData)
             }
         }
+    }
+}
+
+extension AudioRecorderOld {
+    func start(sampleRate: SampleRate) {
+     
     }
 }

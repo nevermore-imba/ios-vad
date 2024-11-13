@@ -26,7 +26,7 @@ class WebrtcVADStrategy: NSObject, VADStrategy {
         
     }
     
-    func checkVAD(pcm: Data, handler: @escaping (VADState) -> Void) {
+    func checkVAD(pcm: [Int16], handler: @escaping (VADState) -> Void) {
         self.handler = handler
     }
     

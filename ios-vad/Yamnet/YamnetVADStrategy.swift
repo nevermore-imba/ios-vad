@@ -8,15 +8,52 @@
 import Foundation
 
 class YamnetVADStrategy: VADStrategy {
+    private var yamnetVAD: YamnetVAD?
+    private var state: VADState = .silence
+    private var handler: ((VADState) -> Void)?
+    private var sampleRate: Int = 0
+
     func setup(sampleRate: SampleRate, frameSize: FrameSize, quality: VADQuality, silenceTriggerDurationMs: Int64, speechTriggerDurationMs: Int64) {
-
+        self.sampleRate = 15600//sampleRate.rawValue
+        yamnetVAD = YamnetVAD(
+            sampleRate: Int64(15600),
+            sliceSize: Int64(frameSize.rawValue),
+            threshold: quality.threshold,
+            silenceTriggerDurationMs: silenceTriggerDurationMs,
+            speechTriggerDurationMs: speechTriggerDurationMs
+        )
+        yamnetVAD?.delegate = self
     }
-    
-    func checkVAD(pcm: Data, handler: @escaping (VADState) -> Void) {
 
+    func checkVAD(pcm: [Int16], handler: @escaping (VADState) -> Void) {
+        self.handler = handler
+        yamnetVAD?.predict(data: Array(pcm[0..<sampleRate]))
+        yamnetVAD?.predict(data: Array(pcm[sampleRate..<(sampleRate * 2)]))
     }
-    
+
     func currentState() -> VADState {
-        return .silence
+        return state
+    }
+}
+
+extension YamnetVADStrategy: YamnetVADDelegate {
+    func yamnetVADDidDetectSpeechStart() {
+        state = .start
+        handler?(.start)
+    }
+
+    func yamnetVADDidDetectSpeechEnd() {
+        state = .end
+        handler?(.end)
+    }
+
+    func yamnetVADDidDetectSilence() {
+        state = .silence
+        handler?(.silence)
+    }
+
+    func yamnetVADDidDetectSpeeching() {
+        state = .speeching
+        handler?(.speeching)
     }
 }
