@@ -232,8 +232,8 @@ Number Detector and Language Classifier <a href="mailto:hello@silero.ai">hello@s
 
 <a id="3">[3]</a>
 [Yamnet VAD](https://github.com/tensorflow/models/tree/master/research/audioset/yamnet) -
-YAMNet is a pretrained deep neural network that can predicts 521 audio event classes based on the AudioSet-YouTube 
+YAMNet is a pretrained deep neural network that can predicts 522 audio event classes based on the AudioSet-YouTube 
 corpus, employing the Mobilenet_v1 depthwise-separable convolution architecture.
 
 ------------
-Georgiy Konovalov 2024 (c) [MIT License](https://opensource.org/licenses/MIT)
+Bao Chuquan 2024 (c) [MIT License](https://opensource.org/licenses/MIT)
