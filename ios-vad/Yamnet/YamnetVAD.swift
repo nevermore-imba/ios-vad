@@ -125,7 +125,7 @@ class YamnetVAD {
         do {
             interpreter = try Interpreter(modelPath: Self.modelPath)
             try interpreter.allocateTensors()
-            // 模型要求的采样率
+            // 模型要求的采样率。模型默认 15600
 //            let inputShape = try interpreter.input(at: 0).shape
 //            let sampleRate = inputShape.dimensions[0]
             try interpreter.invoke()

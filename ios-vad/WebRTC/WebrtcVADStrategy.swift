@@ -23,11 +23,11 @@ class WebrtcVADStrategy: NSObject, VADStrategy {
             speechTriggerDurationMs: speechTriggerDurationMs
         )
         webrtcVAD?.delegate = self
-        
     }
     
     func checkVAD(pcm: [Int16], handler: @escaping (VADState) -> Void) {
         self.handler = handler
+        webrtcVAD?.predict(data: pcm)
     }
     
     func currentState() -> VADState {

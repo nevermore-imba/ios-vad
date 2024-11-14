@@ -13,18 +13,15 @@ enum FrameSize: Int, CaseIterable {
     case size_240 = 240
     case size_320 = 320
     case size_256 = 256
-    case size_243 = 243
     case size_480 = 480
-    case size_487 = 487
     case size_512 = 512
     case size_640 = 640
-    case size_731 = 731
     case size_768 = 768
     case size_960 = 960
-    case size_975 = 975
     case size_1024 = 1024
     case size_1440 = 1440
     case size_1536 = 1536
+    case size_15600 = 15600
 
     var desc: String {
         "FRAME_SIZE_\(self.rawValue)" 
@@ -38,5 +35,5 @@ enum FrameSize: Int, CaseIterable {
     static let silero_8k: [FrameSize] = [.size_256, .size_512, .size_768]
     static let silero_16k: [FrameSize] = [.size_512, .size_1024, .size_1536]
 
-    static let yamnet_16k: [FrameSize] = [.size_243, .size_487, .size_731, .size_975]
+    static let yamnet_15k: [FrameSize] = [.size_15600]
 }

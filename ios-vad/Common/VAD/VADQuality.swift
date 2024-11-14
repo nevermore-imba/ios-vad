@@ -37,5 +37,5 @@ enum VADQuality: String, CaseIterable {
 
     static let webrtc: [VADQuality] = [.normal, .low_bitrate, .aggressive, .very_aggressive]
     static let silero: [VADQuality] = [.normal, .aggressive, .very_aggressive]
-    static let yamnet: [VADQuality] = [.normal, .aggressive, .very_aggressive]
+    static let yamnet: [VADQuality] = [.normal]
 }

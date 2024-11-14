@@ -14,9 +14,9 @@ class YamnetVADStrategy: VADStrategy {
     private var sampleRate: Int = 0
 
     func setup(sampleRate: SampleRate, frameSize: FrameSize, quality: VADQuality, silenceTriggerDurationMs: Int64, speechTriggerDurationMs: Int64) {
-        self.sampleRate = 15600//sampleRate.rawValue
+        self.sampleRate = sampleRate.rawValue
         yamnetVAD = YamnetVAD(
-            sampleRate: Int64(15600),
+            sampleRate: Int64(sampleRate.rawValue),
             sliceSize: Int64(frameSize.rawValue),
             threshold: quality.threshold,
             silenceTriggerDurationMs: silenceTriggerDurationMs,
@@ -27,8 +27,7 @@ class YamnetVADStrategy: VADStrategy {
 
     func checkVAD(pcm: [Int16], handler: @escaping (VADState) -> Void) {
         self.handler = handler
-        yamnetVAD?.predict(data: Array(pcm[0..<sampleRate]))
-        yamnetVAD?.predict(data: Array(pcm[sampleRate..<(sampleRate * 2)]))
+        yamnetVAD?.predict(data: pcm)
     }
 
     func currentState() -> VADState {

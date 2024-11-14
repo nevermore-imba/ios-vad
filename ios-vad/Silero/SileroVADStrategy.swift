@@ -30,19 +30,16 @@ class SileroVADStrategy: VADStrategy {
     func checkVAD(pcm: [Int16], handler: @escaping (VADState) -> Void) {
         self.handler = handler
         let data: [Float] = pcm.map { Float($0) / 32768.0 } // normalize
-        predict(data: data)
-    }
 
-    func currentState() -> VADState {
-        return state
-    }
-
-    private func predict(data: [Float]) {
         do {
             try sileroVAD?.predict(data: data)
         } catch _ {
             fatalError()
         }
+    }
+
+    func currentState() -> VADState {
+        return state
     }
 }
 

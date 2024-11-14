@@ -48,11 +48,8 @@ class WebrtcVAD {
 
     public weak var delegate: WebrtcVADDelegate?
 
-    private var vad = fvad_new()
+    private var vad: OpaquePointer
     private var sampleRate: Int32
-    private var vadPointer: OpaquePointer {
-        return OpaquePointer(UnsafeMutablePointer(&vad))
-    }
 
     // 内部状态
     private var state: State = .silence
@@ -76,21 +73,21 @@ class WebrtcVAD {
         self.silenceBuffer = InternalBuffer(size: silenceBufferSize)
         self.speechBuffer = InternalBuffer(size: speechBufferSize)
 
-        fvad_set_sample_rate(vadPointer, self.sampleRate)
-        fvad_set_mode(vadPointer, Int32(mode))
+        self.vad = fvad_new()
+        fvad_set_sample_rate(vad, self.sampleRate)
+        fvad_set_mode(vad, Int32(mode))
     }
 
     deinit {
-        fvad_reset(vadPointer)
-        fvad_free(vadPointer)
+        fvad_reset(vad)
+        fvad_free(vad)
     }
 
-    public func predict(data: [Float]) {
-        let int16Array: [Int16] = data.map { Int16($0) }
-        let count = int16Array.count
+    public func predict(data: [Int16]) {
+        let count = data.count
         let pointer = UnsafeMutablePointer<Int16>.allocate(capacity: count)
-        pointer.initialize(from: int16Array, count: count)
-        let result = fvad_process(vadPointer, pointer, data.count)
+        pointer.initialize(from: data, count: count)
+        let result = fvad_process(vad, pointer, count)
         pointer.deinitialize(count: count)
         pointer.deallocate()
 

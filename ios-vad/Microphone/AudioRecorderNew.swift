@@ -15,7 +15,7 @@ protocol AudioRecorderNewDelegate: AnyObject {
 class AudioRecorderNew {
     weak var delegate: AudioRecorderNewDelegate?
 
-    private var bufferSize: Int = 0
+    private var frameSize: Int = 0
     private var sampleRate: Int = 0
 
     private var audioEngine: AVAudioEngine?
@@ -23,7 +23,7 @@ class AudioRecorderNew {
 
     func startRecord(sampleRate: SampleRate, frameSize: FrameSize) {
         self.sampleRate = sampleRate.rawValue
-        self.bufferSize = frameSize.rawValue
+        self.frameSize = frameSize.rawValue
 
         self.audioEngine = AVAudioEngine()
         let inputNode = audioEngine?.inputNode
@@ -34,12 +34,13 @@ class AudioRecorderNew {
         else { return }
 
         // installs a tap on the audio engine and specifying the buffer size and the input format.
-        inputNode?.installTap(onBus: 0, bufferSize: AVAudioFrameCount(bufferSize), format: outputFormat) { [weak self] (buffer, _) in
+        inputNode?.installTap(onBus: 0, bufferSize: AVAudioFrameCount(self.frameSize), format: outputFormat) { [weak self] (buffer, _) in
             guard let self = self else { return }
             self.sessionQueue.async {
                 // An AVAudioConverter is used to convert the microphone input to the format required
                 // for the model.(pcm 16)
-                let pcmBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: AVAudioFrameCount(audioFormat.sampleRate * 2.0))
+                //let pcmBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: AVAudioFrameCount(audioFormat.sampleRate * 2.0))
+                let pcmBuffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: AVAudioFrameCount(self.frameSize))
                 guard let pcmBuffer = pcmBuffer else { return }
 
                 var error: NSError?
@@ -53,7 +54,7 @@ class AudioRecorderNew {
                 if error != nil {
                     fatalError()
                 }
-
+                print("[Audio Record] frameLength -> \(pcmBuffer.frameLength), buffer.stride -> \(buffer.stride)")
                 if let channelData = pcmBuffer.int16ChannelData {
                     let channelDataPointee = channelData.pointee
                     let channelDataArray = stride(from: 0, to: Int(pcmBuffer.frameLength), by: buffer.stride).map { channelDataPointee[$0] }
