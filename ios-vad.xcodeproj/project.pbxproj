@@ -41,6 +41,7 @@
 		65E6729E2CE07FF1000A3C09 /* SileroVADStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6729D2CE07FF1000A3C09 /* SileroVADStrategy.swift */; };
 		65E672A02CE0813C000A3C09 /* WebrtcVADStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E6729F2CE0813C000A3C09 /* WebrtcVADStrategy.swift */; };
 		65E672A22CE08189000A3C09 /* YamnetVADStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E672A12CE08189000A3C09 /* YamnetVADStrategy.swift */; };
+		F6366EE12EB4536400C2290C /* silero_vad_v5.onnx in Resources */ = {isa = PBXBuildFile; fileRef = F6366EE02EB4536400C2290C /* silero_vad_v5.onnx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		65E672A12CE08189000A3C09 /* YamnetVADStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YamnetVADStrategy.swift; sourceTree = "<group>"; };
 		6F6A0929579CEEE209A3C073 /* Pods-ios-vad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-vad.release.xcconfig"; path = "Target Support Files/Pods-ios-vad/Pods-ios-vad.release.xcconfig"; sourceTree = "<group>"; };
 		CB44367D8E2D3CAF3B980D2C /* libPods-ios-vad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios-vad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6366EE02EB4536400C2290C /* silero_vad_v5.onnx */ = {isa = PBXFileReference; lastKnownFileType = file; path = silero_vad_v5.onnx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 		65E6729A2CE07E7C000A3C09 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F6366EE02EB4536400C2290C /* silero_vad_v5.onnx */,
 				65E6729B2CE07E8D000A3C09 /* silero_vad.onnx */,
 			);
 			path = Model;
@@ -321,6 +324,7 @@
 				65E6729C2CE07E8D000A3C09 /* silero_vad.onnx in Resources */,
 				656CF6532CE4373100AC1EA8 /* yamnet.tflite in Resources */,
 				6566C5F22CE4F6A4008D670D /* labels.txt in Resources */,
+				F6366EE12EB4536400C2290C /* silero_vad_v5.onnx in Resources */,
 				657229462CDD0FD70077E1CB /* Preview Assets.xcassets in Resources */,
 				657229432CDD0FD70077E1CB /* Assets.xcassets in Resources */,
 			);
